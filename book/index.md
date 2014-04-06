@@ -20,8 +20,7 @@ Essential web tricks
 
 - Customizing 404
 - Outputting JSON
-- Using your own version of jQuery
-- Using jQuery from CDN
+- [Using your own version of asset files](assets-configuration.md)
 - Using Google fonts as assets
 - Cookies for subdomains
 - Using and customizing captcha
@@ -58,7 +57,7 @@ i18n
 
 - General best practices
 - Translating content
-- 
+-
 
 
 Performance
