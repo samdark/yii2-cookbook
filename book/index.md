@@ -22,7 +22,7 @@ Essential web tricks
 - [Outputting JSON and XML](response-formats.md)
 - [Using your own version of asset files](assets-configuration.md)
 - Using Google fonts as assets
-- Cookies for subdomains
+- [Cookies for subdomains](cookies.md)
 - Using and customizing captcha
 - Using WYSIWYG
 - AJAX???
