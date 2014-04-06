@@ -19,7 +19,7 @@ Essential web tricks
 --------------------
 
 - Customizing 404
-- Outputting JSON
+- [Outputting JSON and XML](response-formats.md)
 - [Using your own version of asset files](assets-configuration.md)
 - Using Google fonts as assets
 - Cookies for subdomains
