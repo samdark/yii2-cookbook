@@ -1,10 +1,10 @@
-Cookies for subdomains
-======================
+Managing cookies
+================
 
 Setting a cookie
 ----------------
 
-This is how you usually set your cookies:
+To set a cookie, create new `\yii\web\Cookie` instance and add it to response cookies collection:
 
 ```php
 $cookie = new Cookie([
@@ -25,28 +25,44 @@ Valid cookie config parameters are:
 - secure
 - httpOnly
 
+See [API reference](http://stuff.cebe.cc/yii2docs/yii-web-cookie.html) for detailed explanation of these parameters.
+
+
+Reading a cookie
+----------------
+
+...
+
+```php
+$value = \Yii::$app->getRequest()->getCookies()->getValue('my_cookie');
+```
+
 Cookies for subdomains
 ----------------------
 
-`domain` parameter is empty by default, so cookies will only be accessible on the same domain from which they were set.
-If you're planning to use subdomains (like one.example.com, two.example.com), you need to set `domain` explicitly:
+Because of security reasons, cookies are accessible by default only on the same domain from which they were set.
+For example, if you have set a cookie on domain `example.com`, you cannot get it on domain `www.example.com`.
+So if you're planning to use subdomains (like admin.example.com, profile.example.com), you need to set `domain` explicitly:
 
 ```php
 $cookie = new Cookie([
 	'name' => 'cookie_monster',
-	'value' => 'Me want cookie!',
+	'value' => 'Me want cookie everywhere!',
 	'expire' => time() + 86400 * 365,
 	'domain' => '.example.com' // <<<=== HERE
 ]);
 \Yii::$app->getResponse()->getCookies()->add($cookie);
 ```
 
+Now cookie can be read from all subdomains.
+
 Cross-subdomain auth and identity cookies
 -----------------------------------------
 
-The same is true for identity cookie. But this time you need to configure user component, setting `identityCookie` to desired cookie config.
+The same is true for identity cookie, that is used for autologin.
+But this time you need to configure user component, setting `identityCookie` array to desired cookie config.
 
-Open you application config file and add `identityCookie` array to user component configuration:
+Open you application config file and add `identityCookie` parameters to user component configuration:
 
 ```php
 $config = [
@@ -70,4 +86,18 @@ $config = [
 ```
 
 Now identity cookie is accessible on all subdomains.
+
+Session cookie params
+---------------------
+
+???
+TBD
+
+See also
+--------
+
+[API reference](http://stuff.cebe.cc/yii2docs/yii-web-cookie.html)
+[TBD: Yii documentation](https://github.com/yiisoft/yii2/blob/master/docs/guide/security.md#securing-cookies)
+[PHP documentation](http://php.net/manual/en/function.setcookie.php)
+[RFC 6265](http://www.faqs.org/rfcs/rfc6265.html)
 

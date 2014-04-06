@@ -1,10 +1,14 @@
 Working with different response types
 =====================================
 
+Web and mobile applications are more than just rendered HTML nowadays.
+Modern architecture moves the UI to the client, where all user interactions are handled by the client-side, utilizing server APIs to drive the frontend.
+The JSON and XML formats are often used for serializing and transmitting structured data over a network, so the ability to create such responses is a must for any modern server framework.
+
 Response formats
 ----------------
 
-As you probably know, in Yii2 you need to `return()` the result from your action, instead of echoing it directly:
+As you probably know, in Yii2 you need to `return` the result from your action, instead of echoing it directly:
 
 ```php
 // returning HTML result
@@ -20,7 +24,7 @@ Good thing about it is now you can return different types of data from your acti
 - a string
 - an object implementing `__toString()` method.
 
-Just don't forget to tell Yii what format do you want as result, by setting `\Yii::$app->response->format` before `return()`. For example:
+Just don't forget to tell Yii what format do you want as result, by setting `\Yii::$app->response->format` before `return`. For example:
 ```php
 \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 ```
@@ -34,7 +38,6 @@ Valid formats are:
 - FORMAT_XML
 
 Default is `FORMAT_HTML`.
-
 
 JSON response
 -------------
@@ -52,7 +55,7 @@ public function actionIndex()
 
 And - voila! - we have JSON response right out of the box:
 
-**Result:**
+**Result**
 ```
 {
     "0": "some",
@@ -62,9 +65,9 @@ And - voila! - we have JSON response right out of the box:
 }
 ```
 
-(Notice that you'll get an exception if response format is not set).
+**Note**: you'll get an exception if response format is not set.
 
-As I've said before, we can return objects too.
+As we already know, we can return objects too.
 
 ```php
 public function actionView($id)
@@ -75,9 +78,9 @@ public function actionView($id)
 }
 ```
 
-Now $user is an object of `ActiveRecord` class that implements `Arrayable` interface, so it can be easily converted to JSON.
+Now $user is an instance of `ActiveRecord` class that implements `Arrayable` interface, so it can be easily converted to JSON:
 
-**Result:**
+**Result**
 ```
 {
     "id": 1,
@@ -97,9 +100,9 @@ public function actionIndex()
 }
 ```
 
-Now $users is an array of ActiveRecord objects, but under the hood Yii uses `\yii\helpers\Json::encode()` to traverse and convert the returned data.
+Now `$users` is an array of ActiveRecord objects, but under the hood Yii uses `\yii\helpers\Json::encode()` that traverses and converts the passed data, taking care of types by itself:
 
-**Result:**
+**Result**
 ```
 [
     {
@@ -129,7 +132,7 @@ public function actionIndex()
 }
 ```
 
-**Result:**
+**Result**
 ```xml
 <response>
     <item>some</item>
