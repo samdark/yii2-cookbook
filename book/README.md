@@ -37,6 +37,7 @@ Security
 Structuring and organizing code
 -------------------------------
 
+- [Backend and frontend via modules](structure-backend-frontend-modules,md)
 
 Models
 ------
