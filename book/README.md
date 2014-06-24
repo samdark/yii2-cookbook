@@ -13,7 +13,7 @@ Unnoticed basics
 Logging and error handling
 --------------------------
 
-- [Writing 404 to its own log file](logging-404-to-own-file.md)
+- [Logging: problems and solutions](logging-problems-and-solutions.md)
 
 Essential web tricks
 --------------------
