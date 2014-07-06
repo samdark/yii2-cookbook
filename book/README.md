@@ -70,4 +70,5 @@ Don't know where these should belong to :)
 
 - Implementing backgroud tasks (cronjobs)
 - Using Yii in third party apps
-- Making your life easier (IDE, XDebug, debug toolbar, gii)
+- Making your life easier (XDebug, debug toolbar, gii)
+- [IDE autocompletion for custom components](ide-autocompletion.md)
