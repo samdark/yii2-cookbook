@@ -1,37 +1,35 @@
 IDE autocompletion for custom components
-===============================
+========================================
 
-This recipe describes how to get IDE autocompletion for `Yii::$app->user->identity` and custom components.
+Using IDE for development is quite typical nowadays because of the comfort it provides. It detects typos and errors, suggests code improvements and, of course, provides code autocomplete. For Yii 2.0 it works quite good out of the box but not in case of custom application components i.e. `Yii::$app->mycomponent->something`.
 
--------------------------
+Using custom Yii class
+----------------------
 
-In most of cases during developing application based on Yii, there is need to extend some framework Core components.
-It becomes annoying when there is no hints for `Yii::$app->user->identity`, like methods and properies we set in our User's model.
+The best way to give IDE some hints is to use your own `Yii` file. Let's check application's `index.php`:
 
-Fortunately, Yii2 designed in way allowing to add IDE support for these custom extended classes.
-There is file `./vendor/yiisoft/yii2/Yii.php` which is included to start the application.
+```php
+<?php
 
-To have IDE support create copy of that file and include it in your application's index.php instead of core `Yii.php` file.
+// comment out the following two lines when deployed to production
+defined('YII_DEBUG') or define('YII_DEBUG', true);
+defined('YII_ENV') or define('YII_ENV', 'dev');
 
-new file: `Yii.php`:
+require(__DIR__ . '/../vendor/autoload.php');
+require(__DIR__ . '/../vendor/yiisoft/yii2/Yii.php');
+
+$config = require(__DIR__ . '/../config/web.php');
+
+(new yii\web\Application($config))->run();
+```
+
+The line `require(__DIR__ . '/../vendor/yiisoft/yii2/Yii.php');` could be changed to use our own file instead of the default one. `Yii.php` file could be the following:
+
 ```php
 <?php
 /**
  * Yii bootstrap file.
- * Used for IDE code autocompletion for our extended from Yii core components and classes.
- *
- * This file is copy and does the same as './vendor/yiisoft/yii2/Yii.php'.
- * Note! To avoid 'Multiple Implementations' PHPStorm waring and make autocomplete faster
- *  - exclude or 'Mark as Plain Text' file './vendor/yiisoft/yii2/Yii.php'.
- *
- *
- * Yii is a helper class serving common framework functionalities.
- *
- * It extends from [[\yii\BaseYii]] which provides the actual implementation.
- * By writing your own Yii class, you can customize some functionalities of [[\yii\BaseYii]].
- *
- * @author Qiang Xue <qiang.xue@gmail.com>
- * @since 2.0
+ * Used for enhanced IDE code autocompletion.
  */
 class Yii extends \yii\BaseYii
 {
@@ -79,7 +77,17 @@ class ConsoleApplication extends yii\console\Application
 }
 ```
 
-Now `Yii::$app->user` component is extended. To get autocompletion for User's Identity `Yii::$app->user->identity`, `app\components\User` class should look this way:
+In the above PHPDoc of `BaseApplication`, `WebApplication`, `ConsoleApplication` will be used by IDE to autocomplete your custom components described via `@property`.
+
+> **Note**: To avoid "Multiple Implementations" PHPStorm waring and make autocomplete faster
+> exclude or "Mark as Plain Text" `vendor/yiisoft/yii2/Yii.php` file.
+
+That's it. Now `Yii::$app->user` will be our `\app\components\User` component instead of default one. The same applies for all other `@property`-declared components.
+
+### Customizing User component
+
+In order to get autocompletion for User's Identity i.e. `Yii::$app->user->identity`, `app\components\User` class should look like the following:
+
 ```php
 <?php
 
@@ -98,6 +106,7 @@ class User extends \yii\web\User
 ```
 
 As a result, Yii config file may look this way:
+
 ```php
 return [
     ...
