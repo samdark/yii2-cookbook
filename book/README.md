@@ -67,7 +67,7 @@ Active Record
 - Using SQL and noSQL at the same time
 - Saving related models
 - Using multiple SQL DBs in the same app
-- Single table inheritance
+- [Single table inheritance](ar-single-table-inheritance.md)
 
 
 i18n
