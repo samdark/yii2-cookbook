@@ -16,8 +16,8 @@ The book consists of individual recipes you can apply to practice in you applica
 Prerequisites
 -------------
 
-- You should have Yii 2.0 installed.
-- You should be familiar with the framework basics and the official guide.
+- You should [have Yii 2.0 installed](http://www.yiiframework.com/doc-2.0/guide-start-installation.html).
+- You should be familiar with the framework basics and [the official guide](http://www.yiiframework.com/doc-2.0/guide-README.html).
 
 How to participate
 ------------------
