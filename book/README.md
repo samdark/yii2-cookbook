@@ -66,7 +66,6 @@ Active Record
 - Has and belongs to many
 - Using SQL and noSQL at the same time
 - Saving related models
-- [Using multiple database connections](ar-multiple-database-connections.md)
 - [Single table inheritance](ar-single-table-inheritance.md)
 
 
