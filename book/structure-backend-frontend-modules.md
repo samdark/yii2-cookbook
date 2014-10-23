@@ -1,6 +1,8 @@
 Structure: backend and frontend via modules
 ===========================================
 
+https://github.com/yiisoft/yii2/issues/3647
+
 By default Yii comes with advanced application template that allows you to properly structure backend and frontend.
 It's a good way to deal with the problem except when you want to redistribute parts of your application. In this
 case a better way is to use modules.
