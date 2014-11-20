@@ -129,7 +129,7 @@ foreach ($cars as $car) {
 }
 
 // finding any sport car
-$sportCar = SportCar::find()->one();
+$sportCar = SportCar::find()->limit(1)->one();
 echo "$sportCar->id $sportCar->name " . get_class($sportCar) . "<br />";
 ```
 
