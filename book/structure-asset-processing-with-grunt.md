@@ -18,12 +18,13 @@ its required plugins by executing the following commands in project root directo
 
 ```
 npm install -g grunt-cli
+
 npm install grunt --save-dev
 npm install grunt-contrib-less --save-dev
 npm install grunt-contrib-uglify --save-dev
 npm install grunt-contrib-watch --save-dev
-npm install typescript --save-dev
 npm install grunt-concat-sourcemap --save-dev
+npm install typescript --save-dev
 npm install grunt-typescript --save-dev
 ```
 
@@ -49,8 +50,6 @@ $config = [
 
 reutrn $config;
 ```
-
-It turns out asset management completely so you'll see bare HTML after doing it.
 
 Edit layout file `views/layouts/main.php`. After `<?= Html::csrfMetaTags() ?>` add:
 
