@@ -95,3 +95,9 @@ Tools
 
 - Making your life easier (XDebug, debug toolbar, gii)
 - [IDE autocompletion for custom components](ide-autocompletion.md)
+
+Yii Recipes
+-----------
+ - Simple Blog Application
+ - Multiple Users Blog Application with Contents Categorization
+ - Online Classified Products Catalog
