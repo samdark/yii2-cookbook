@@ -56,6 +56,7 @@ View
 - Reusing views via partials
 - Using blocks
 - Using decorators
+- When to use Widgets and when not to
 
 Models
 ------
