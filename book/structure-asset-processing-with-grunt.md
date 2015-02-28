@@ -48,7 +48,7 @@ $config = [
 
 // ...
 
-reutrn $config;
+return $config;
 ```
 
 Edit layout file `views/layouts/main.php`. After `<?= Html::csrfMetaTags() ?>` add:
