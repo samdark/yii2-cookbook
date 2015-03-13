@@ -151,7 +151,7 @@ public function actionIndex()
 {
     \Yii::$app->response->format = \yii\web\Response::FORMAT_XML;
     $users = \app\models\User::find()->all();
-    return $items;
+    return $users;
 }
 ```
 **Result:**
