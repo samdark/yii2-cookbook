@@ -67,7 +67,7 @@ return [
 ];
 ```
 
-### Support selecting language manually
+## Support selecting language manually
 
 While it sounds like a great idea to always detect language, it’s usually not enough. Detection could fail so
 user will get language he doesn’t know, user may know many languages but prefer, for example, English for information
@@ -88,7 +88,7 @@ language code => language name pairs.
 Form handling should be done in controller. A good place to do it is `SiteController::actionLanguage`:
 
 ```php
-$language = Yii::$app->request->post[‘language’];
+$language = Yii::$app->request->post['language'];
 Yii::$app->language = $language;
 
 $languageCookie = new Cookie([
@@ -149,7 +149,11 @@ rules you need to define language part i.e.:
 ```
 
 The con of this approach is that it is repetitive. You have to define it for all URLs you have and
-you have to put current language to parameters list each time you’re creating an URL.
+you have to put current language to parameters list each time you’re creating an URL such as:
+
+```php
+<?= Html::a('DE', ['post/view', 'language' => 'de']); ?>
+```
 
 Thanks to Yii we have an ability to replace default URL class with our own right from config file:
 
@@ -172,3 +176,7 @@ class LanguageUrlRule extends UrlRule
 {
 }
 ```
+
+## Ready to use solutions
+
+- https://github.com/codemix/yii2-localeurls
