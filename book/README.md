@@ -75,6 +75,7 @@ i18n
 ----
 
 - General best practices
+- [Selecting application language](i18n-selecting-application-language.md)
 - Translating content
 
 
