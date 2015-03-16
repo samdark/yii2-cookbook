@@ -84,6 +84,7 @@ Performance
 - Necessary production setup
 - Speeding up sessions
 - Implementing backgroud tasks (cronjobs)
+- [Running Yii on HHVM](performance-hhvm.md)
 
 External code
 -------------
