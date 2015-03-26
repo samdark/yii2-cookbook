@@ -94,7 +94,7 @@ Yii::$app->language = $language;
 $languageCookie = new Cookie([
     'name' => 'language',
     'value' => $language,
-    'expire' => 60 * 60 * 24 * 30, // 30 days
+    'expire' => time() + 60 * 60 * 24 * 30, // 30 days
 ]);
 Yii::$app->request->cookies->add($languageCookie);
 ```
