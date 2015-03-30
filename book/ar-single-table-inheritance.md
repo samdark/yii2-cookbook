@@ -46,7 +46,8 @@ namespace app\models;
 
 use yii\db\ActiveQuery;
 
-class CarQuery extends ActiveQuery {
+class CarQuery extends ActiveQuery
+{
     public $type;
 
     public function prepare($builder)
