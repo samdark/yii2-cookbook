@@ -20,6 +20,7 @@ its required plugins by executing the following commands in project root directo
 npm install -g grunt-cli
 
 npm install grunt --save-dev
+npm install grunt-contrib-copy --save-dev
 npm install grunt-contrib-less --save-dev
 npm install grunt-contrib-uglify --save-dev
 npm install grunt-contrib-watch --save-dev
