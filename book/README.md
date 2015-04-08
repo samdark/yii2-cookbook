@@ -26,14 +26,13 @@ Web essentials
 - [Outputting JSON and XML](response-formats.md)
 - Using Google fonts as assets
 - [Managing cookies](cookies.md)
-- Using and customizing captcha
 - Using WYSIWYG
 - AJAX???
 
 Forms
 -----
 
-- CAPTCHA
+- [Using and customizing captcha](forms-captcha.md)
 
 Security
 --------
