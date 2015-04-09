@@ -90,7 +90,7 @@ Performance
 External code
 -------------
 
-- Using Yii in third party apps
+- [Using Yii in third party apps](using-yii-in-third-party-apps.md)
 - Using third party code with Yii
 
 Tools
