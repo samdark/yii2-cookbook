@@ -70,6 +70,7 @@ Now we can actually display image and verification input box in a view containin
     <?= $form->field($model, 'verifyCode')->widget(Captcha::className()) ?>
     // ...
 <?php ActiveForm::end(); ?>
+```
 
 That's it. Now robots won't pass. At least dumb ones.
 
