@@ -28,6 +28,7 @@ Web essentials
 - [Managing cookies](cookies.md)
 - Using WYSIWYG
 - AJAX???
+- [Handling incoming third party POST requests](incoming-post.md)
 
 Forms
 -----
