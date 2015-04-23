@@ -212,7 +212,7 @@ return [
 ];
 ```
 
-Not it's ready to be used. In `controllers/SiteController` create a new method `actionTest`:
+Now it's ready to be used. In `controllers/SiteController` create a new method `actionTest`:
 
 ```php
 public function actionTest()
