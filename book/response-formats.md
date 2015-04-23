@@ -170,7 +170,65 @@ public function actionIndex()
 </response>
 ```
 
-Custom response
----------------
+Custom response format
+----------------------
 
-TBD
+Let's create a custom response format. To make example a bit fun and crazy we'll respond with PHP arrays.
+
+First of all, we need formatter itself. Create `components/PhpArrayFormatter.php`:
+
+```php
+<?php
+namespace app\components;
+
+use yii\helpers\VarDumper;
+use yii\web\ResponseFormatterInterface;
+
+class PhpArrayFormatter implements ResponseFormatterInterface
+{
+    public function format($response)
+    {
+        $response->getHeaders()->set('Content-Type', 'text/php; charset=UTF-8');
+        if ($response->data !== null) {
+            $response->content = "<?php\nreturn " . VarDumper::export($response->data) . ";\n";
+        }
+    }
+}
+```
+
+Now we need to registed it in application config (usually it's `config/web.php`):
+
+```php
+return [
+    // ...
+    'components' => [
+        // ...
+        'response' => [
+            'formatters' => [
+                'php' => 'app\components\PhpArrayFormatter',
+            ],
+        ],
+    ],
+];
+```
+
+Not it's ready to be used. In `controllers/SiteController` create a new method `actionTest`:
+
+```php
+public function actionTest()
+{
+    Yii::$app->response->format = 'php';
+    return [
+        'hello' => 'world!',
+    ];
+}
+```
+
+That's it. After executing it, Yii will respond with the following:
+
+```php
+<?php
+return [
+    'hello' => 'world!',
+];
+```
