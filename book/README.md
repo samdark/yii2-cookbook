@@ -49,7 +49,7 @@ Structuring and organizing code
 
 - [Backend and frontend via modules](structure-backend-frontend-modules.md)
 - [Asset processing with Grunt](structure-asset-processing-with-grunt.md)
-
+- [Using global functions](structure-global-functions.md)
 
 View
 ----
