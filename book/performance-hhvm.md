@@ -79,7 +79,7 @@ Test it first
 
 HHVM is more or less [tested to work with most frameworks out there](http://hhvm.com/frameworks/). Yii isn't exception.
 Except minor issues everything should work. Still, there are
-[many incompatibilities comared to PHP](https://github.com/facebook/hhvm/labels/php5%20incompatibility) so make sure to
+[many incompatibilities compared to PHP](https://github.com/facebook/hhvm/labels/php5%20incompatibility) so make sure to
 test application well before going live.
 
 Error reporting
