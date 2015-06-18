@@ -87,8 +87,26 @@ $config = [
 Session cookie parameters
 -------------------------
 
-???
-TBD
+Session cookies parameters are important both if you have a need to maintain session while getting from one
+subdomain to another or when, in contrary, you host backend app under `/admin` URL and want handle session
+separately.
+
+```php
+$config = [
+    // ...
+    'components' => [
+        // ...
+        'session' => [
+            'name' => 'admin_session',
+            'cookieParams' => [
+                'httpOnly' => true,
+                'path' => '/admin',
+            ],
+        ],
+    ],
+];
+```
+
 
 See also
 --------
