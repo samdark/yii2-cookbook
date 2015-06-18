@@ -22,7 +22,7 @@ Logging and error handling
 Web essentials
 --------------
 
-- [URLs with varialbe number of parameters](urls-variable-number-of-parameters.md)
+- [URLs with variable number of parameters](urls-variable-number-of-parameters.md)
 - [Outputting JSON and XML](response-formats.md)
 - Using Google fonts as assets
 - [Managing cookies](cookies.md)
