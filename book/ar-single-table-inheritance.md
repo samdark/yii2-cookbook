@@ -71,7 +71,7 @@ class SportCar extends Car
 
     public static function find()
     {
-        return new CarQuery(get_called_class(), ['where' => ['type' => self::TYPE]]);
+        return new CarQuery(get_called_class(), ['type' => self::TYPE]);
     }
 
     public function beforeSave($insert)
@@ -93,7 +93,7 @@ class HeavyCar extends Car
 
     public static function find()
     {
-        return new CarQuery(get_called_class(), ['where' => ['type' => self::TYPE]]);
+        return new CarQuery(get_called_class(), ['type' => self::TYPE]);
     }
 
     public function beforeSave($insert)
