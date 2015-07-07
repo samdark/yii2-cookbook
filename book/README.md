@@ -34,6 +34,7 @@ Forms
 -----
 
 - [Using and customizing captcha](forms-captcha.md)
+- [Working with ActiveForm via JavaScript](forms-activeform-js.md)
 
 Security
 --------
