@@ -20,6 +20,14 @@ Triggering validation for individual form fields
 $('#contact-form').yiiActiveForm('validateAttribute', 'contactform-name');
 ```
 
+Trigger validation for the whole form
+-------------------------------------
+
+```javascript
+$('#contact-form').data('yiiActiveForm').submitting = true;
+$('#contact-form').yiiActiveForm('validate');
+```
+
 Using events
 ------------
 
