@@ -81,8 +81,13 @@ $config = [
             ],
         ],
     ],
+    'request' => [
+        'cookieValidationKey' => 'your_validation_key'
+    ],
 ];
 ```
+
+Note that `cookieValidationKey` should be the same for all sub-domains.
 
 Session cookie parameters
 -------------------------
