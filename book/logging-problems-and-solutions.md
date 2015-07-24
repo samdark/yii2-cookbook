@@ -63,3 +63,38 @@ the progress. In this case you need to change settings via application config fi
     ]
 ]
 ```
+
+Write different logs to different files
+-----------------
+
+Usually a program has a lot of functions. Sometimes it is necessary to control these functions by logging. If everything is logged in one file this file becomes too big and too difficult to maintain. Good solution is to write different functions logs to different files.
+
+For example you have two functions: catalog and basket. Let's write logs to catalog.log and basket.log respectively. In this case you need to establish categories for your log messages. Make a connection between them and log targets by changing application config file:
+
+```php
+'components' => [
+    'log' => [
+        'targets' => [
+                [
+                    'class' => 'yii\log\FileTarget',
+                    'categories' => ['catalog'],
+                    'logFile' => '@app/runtime/logs/catalog.log',
+                ],
+                [
+                    'class' => 'yii\log\FileTarget',
+                    'categories' => ['basket'],
+                    'logFile' => '@app/runtime/logs/basket.log',
+                ],
+        ],
+    ]
+]
+```
+
+After this you are able to write logs to separate files adding category name to log function as second parameter. Examples: 
+
+```php
+\Yii::info('catalog info', 'catalog');
+\Yii::error('basket error', 'basket');
+\Yii::beginProfile('add to basket', 'basket');
+\Yii::endProfile('add to basket', 'basket');
+```
