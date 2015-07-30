@@ -3,7 +3,7 @@ Handling incoming third party POST requests
 
 By default Yii uses CSRF protection that verifies that POST requests could be made only by the same application.
 It enhances overall security significantly but there are cases when CSRF should be disabled i.e. when you expect
-incoming POST requests from a third party serice.
+incoming POST requests from a third party service.
 
 Additionally, if third party is posting via XMLHttpRequest (browser AJAX), we need to send additional headers to allow CORS ([cross-origin resource sharing](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)).
 
