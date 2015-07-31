@@ -24,6 +24,11 @@ return [
     'language' => 'ru_RU',
 ];
 ```
+
+Note that it should be done every request before any output in order for outputted content to be affected.
+Good places to consider are custom `UrlManager`, custom `UrlRule`, controller's or module's `beforeAction()`
+or application bootstrap.
+
 ## Detecting language automatically
 
 Detecting language automatically could help your application to conquer international markets if done properly.
@@ -67,6 +72,8 @@ return [
 ];
 ```
 
+As was mentioned above, it could be implemented in custom `UrlManager`, custom `UrlRule` or controller's / module's `beforeAction()` instead.
+
 ## Support selecting language manually
 
 While it sounds like a great idea to always detect language, it’s usually not enough. Detection could fail so
@@ -83,7 +90,12 @@ So the solution consists of three parts:
 Let’s start with language selector widget. Overall it’s a simple select widget pre-filled with an array of
 language code => language name pairs.
 
-/// …. form
+```php
+<?= Html::beginForm() ?>
+<?= Html::dropDownList('language', Yii::$app->language, ['en-US' => 'English', 'zh-CN' => 'Chinese']) ?>
+<?= Html::submitButton('Change') ?>
+<?= Html::endForm() ?>
+```
 
 Form handling should be done in controller. A good place to do it is `SiteController::actionLanguage`:
 
@@ -138,8 +150,8 @@ So far we’ve found a way to detect language, select it manually and store it. 
 applications for which search engine indexing isn’t important, it is already enough. For others you need to
 expose each application language to the world.
 
-The best way to do it is to include language in the URL such as http://example.com/ru/about or subdomain
-such as http://ru.example.com/about.
+The best way to do it is to include language in the URL such as `http://example.com/ru/about` or subdomain
+such as `http://ru.example.com/about`.
 
 The most straightforward implementation is about creating URL manager rules for each URL you have. In these
 rules you need to define language part i.e.:
@@ -169,14 +181,24 @@ return [
 ];
 ```
 
-Here’s what language aware url rule class could look like:
+Here’s what language aware URL rule class could look like:
 
 ```php
 class LanguageUrlRule extends UrlRule
 {
+    public function init()
+    {
+        if ($this->pattern !== null) {
+            $this->pattern = '<language>/' . $this->pattern;
+            // for subdomain it should be:
+            // $this->pattern =  'http://<language>.example.com/' . $this->pattern,
+        }
+        $this->defaults['language'] = Yii::$app->language;
+        parent::init();
+    }
 }
 ```
 
-## Ready to use solutions
+### Ready to use extension
 
-- https://github.com/codemix/yii2-localeurls
+[yii2-localeurls extension](https://github.com/codemix/yii2-localeurls) implements reliable and quite customizable way of handling language in URLs.
