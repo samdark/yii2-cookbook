@@ -89,6 +89,7 @@ Performance
 - Speeding up sessions
 - Implementing backgroud tasks (cronjobs)
 - [Running Yii on HHVM](performance-hhvm.md)
+- [Caching] (caching.md)
 
 External code
 -------------
