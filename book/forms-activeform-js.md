@@ -53,3 +53,27 @@ $('#contact-form').yiiActiveForm('add', {
 });
 ```
 
+Updating error of a signle attribute
+------------------------------------
+
+In order to add error to the attribute:
+
+```javascript
+$('#contact-form').yiiActiveForm('updateAttribute', 'contactform-subject', ["I have an error..."]);
+```
+
+In order to remove it:
+
+```javascript
+$('#contact-form').yiiActiveForm('updateAttribute', 'contactform-subject', '');
+```
+
+Update error messages and, optionally, summary
+----------------------------------------------
+
+```javascript
+$('#contact-form').yiiActiveForm('updateMessages', {
+    'contactform-subject': ['Really?'],
+    'contactform-email': ['I don\'t like it!']
+}, 'There are errors!');
+```
