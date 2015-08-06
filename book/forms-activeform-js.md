@@ -75,5 +75,7 @@ Update error messages and, optionally, summary
 $('#contact-form').yiiActiveForm('updateMessages', {
     'contactform-subject': ['Really?'],
     'contactform-email': ['I don\'t like it!']
-}, 'There are errors!');
+}, true);
 ```
+
+The last argument in the above code indicates if we need to update summary.
