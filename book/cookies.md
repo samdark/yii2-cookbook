@@ -80,9 +80,9 @@ $config = [
                 'domain' => '.example.com',
             ],
         ],
-    ],
-    'request' => [
-        'cookieValidationKey' => 'your_validation_key'
+        'request' => [
+            'cookieValidationKey' => 'your_validation_key'
+        ],
     ],
 ];
 ```
