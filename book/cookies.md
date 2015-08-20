@@ -83,11 +83,20 @@ $config = [
         'request' => [
             'cookieValidationKey' => 'your_validation_key'
         ],
+        'session' => [
+            'cookieParams' => [
+                'domain' => '.example.com',
+                'httpOnly' => true,
+            ],
+        ],
+
     ],
 ];
 ```
 
 Note that `cookieValidationKey` should be the same for all sub-domains.
+
+Note that you have to configure the `session::cookieParams` property to have the samedomain as your `user::identityCookie` to ensure the `login` and `logout` work for all subdomains. This behavior is better explained on the next section.
 
 Session cookie parameters
 -------------------------
