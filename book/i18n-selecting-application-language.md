@@ -37,7 +37,7 @@ your application supports:
 
 ```php
 $supportedLanguages = ['en', 'ru'];
-$languages = Yii::$app->request->getPreferredLanguage($supportedLanguage);
+$languages = Yii::$app->request->getPreferredLanguage($supportedLanguages);
 ```
 
 Note that language should be set prior to controller action so it’s a good idea to create language selection component:
