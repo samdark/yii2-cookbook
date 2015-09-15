@@ -52,7 +52,7 @@ Structuring and organizing code
 - [Asset processing with Grunt](structure-asset-processing-with-grunt.md)
 - Asset processing with Gulp
 - [Using global functions](structure-global-functions.md)
-- [Processing text](structure-processing-text.md)
+- [Processing text](processing-text.md)
 
 View
 ----
@@ -90,7 +90,7 @@ Performance
 - Speeding up sessions
 - Implementing backgroud tasks (cronjobs)
 - [Running Yii on HHVM](performance-hhvm.md)
-- [Caching] (caching.md)
+- [Caching](caching.md)
 
 External code
 -------------
