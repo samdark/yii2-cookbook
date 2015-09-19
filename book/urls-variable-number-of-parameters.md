@@ -46,7 +46,7 @@ class ProductController extends Controller
     public function actionCategory($categories)
     {
         $params = explode('/', $categories);
-        print_r($categories);
+        print_r($params);
     }
 }
 ```
