@@ -67,6 +67,12 @@ class SportCar extends Car
 {
     const TYPE = 'sport';
 
+    public function init()
+    {
+        $this->type = self::TYPE;
+        parent::init();
+    }
+
     public static function find()
     {
         return new CarQuery(get_called_class(), ['type' => self::TYPE]);
@@ -88,6 +94,12 @@ namespace app\models;
 class HeavyCar extends Car
 {
     const TYPE = 'heavy';
+
+    public function init()
+    {
+        $this->type = self::TYPE;
+        parent::init();
+    }
 
     public static function find()
     {
