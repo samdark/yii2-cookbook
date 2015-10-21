@@ -23,6 +23,7 @@ Web essentials
 --------------
 
 - [URLs with variable number of parameters](urls-variable-number-of-parameters.md)
+- [Pagination pretty URLs](pagination-pretty-urls.md)
 - [Outputting JSON and XML](response-formats.md)
 - Using Google fonts as assets
 - [Managing cookies](cookies.md)
