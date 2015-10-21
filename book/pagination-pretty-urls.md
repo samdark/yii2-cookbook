@@ -23,7 +23,9 @@ $config = [
               'schools/<title:\w+>' => 'site/schools',
             ],
         ],
-    ]
+        // ...
+    ],
+    // ...
 ```
 
 We decided to add a GridView on the page `http://example.com/schools/schoolTitle`.
@@ -44,4 +46,5 @@ $config = [
               'schools/<title:\w+>' => 'site/schools',
             ],
         ],
+        // ...
 ```
