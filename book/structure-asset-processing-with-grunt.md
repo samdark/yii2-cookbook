@@ -186,7 +186,7 @@ module.exports = function (grunt) {
 };
 ```
 
-Now Grunt will look in `assets/js`, `assets/less` and `assets/ts` for clietside source files.
+Now Grunt will look in `assets/js`, `assets/less` and `assets/ts` for clientside source files.
 
 Create `assets/js/all.json`:
 
