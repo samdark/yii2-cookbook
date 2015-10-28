@@ -100,7 +100,7 @@ language code => language name pairs.
 Form handling should be done in controller. A good place to do it is `SiteController::actionLanguage`:
 
 ```php
-$language = Yii::$app->request->post['language'];
+$language = Yii::$app->request->post('language');
 Yii::$app->language = $language;
 
 $languageCookie = new Cookie([
