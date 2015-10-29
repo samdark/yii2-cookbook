@@ -1,7 +1,7 @@
 Web page SEO tags
 =======================================
 
-Organic extradition is an excellent free traffic source. But in order to have such kind of traffic you have
+Organic search is an excellent free traffic source. But in order to have such kind of traffic you have
 to make a lot of steps to improve your web project.
 
 One of such step is to provide title tag, description meta tag, and keywords meta tag for your web pages.
