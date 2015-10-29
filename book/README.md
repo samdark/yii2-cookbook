@@ -23,13 +23,17 @@ Web essentials
 --------------
 
 - [URLs with variable number of parameters](urls-variable-number-of-parameters.md)
-- [Pagination pretty URLs](pagination-pretty-urls.md)
 - [Outputting JSON and XML](response-formats.md)
 - Using Google fonts as assets
 - [Managing cookies](cookies.md)
 - Using WYSIWYG
 - AJAX???
 - [Handling incoming third party POST requests](incoming-post.md)
+
+SEO essentials
+--------------
+- [Pagination pretty URLs](pagination-pretty-urls.md)
+- [Web page SEO tags](web-page-seo-tags.md)
 
 Forms
 -----
