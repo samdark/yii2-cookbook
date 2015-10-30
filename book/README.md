@@ -32,8 +32,10 @@ Web essentials
 
 SEO essentials
 --------------
+- [Enable pretty URLs](enable-pretty-urls.md)
 - [Pagination pretty URLs](pagination-pretty-urls.md)
 - [Web page SEO tags](web-page-seo-tags.md)
+- Canonical URLs and slugs.
 
 Forms
 -----
