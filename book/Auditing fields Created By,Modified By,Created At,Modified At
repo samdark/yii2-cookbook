@@ -12,7 +12,7 @@ Let say we have table namely **customer** with below auditing fields.
 | created_at    |   timestamp   |
 | modified_at   |   timestamp   |
 
-Add below code in your models/customer/php
+Add below code in your models/customer.php
 
 ```
 use yii\behaviors\TimestampBehavior;
