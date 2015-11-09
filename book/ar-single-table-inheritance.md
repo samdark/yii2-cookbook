@@ -167,3 +167,18 @@ after data is retrieved from database and is about to be used to initialize clas
 class instance and the only argument passed to the method is the row of data retrieved from the database. Exactly what we need.
 The implementation is a simple switch statement where we're checking if the `type` field matches type of the classes we suport.
 If so, an instance of the class is returned. If nothing matches, it falls back to returning a `Car` model instance. 
+
+Handling unique values
+----------------------
+
+If you have a column marked as unique, to prevent breaking the `UniqueValidator`` you need to specify the `targetClass`
+property.
+
+```php
+    public function rules()
+    {
+        return [
+            [['MyUniqueColumnName'], 'unique', 'targetClass' => '\app\models\Car'],
+        ];
+    }
+```
