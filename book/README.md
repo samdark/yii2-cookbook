@@ -63,7 +63,7 @@ Structuring and organizing code
 View
 ----
 
-- Reusing views via partials
+- [Reusing views via partials](reusing-views-via-partials.md)
 - Using blocks
 - Using decorators
 - When to use Widgets and when not to
