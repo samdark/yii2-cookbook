@@ -108,7 +108,7 @@ $languageCookie = new Cookie([
     'value' => $language,
     'expire' => time() + 60 * 60 * 24 * 30, // 30 days
 ]);
-Yii::$app->request->cookies->add($languageCookie);
+Yii::$app->response->cookies->add($languageCookie);
 ```
 
 We’re using cookie to store the language. But it could be, for example, database:
