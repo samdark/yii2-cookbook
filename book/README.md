@@ -37,6 +37,7 @@ SEO essentials
 - [Pagination with pretty URLs](pagination-pretty-urls.md)
 - [Adding SEO tags](adding-page-seo-tags.md)
 - Canonical URLs and slugs
+- [Handling trailing slash in URLs](handling-trailing-slash-in-urls.md)
 
 Forms
 -----
