@@ -63,7 +63,7 @@ $('#contact-form').yiiActiveForm('add', {
 });
 ```
 
-Updating error of a signle attribute
+Updating error of a single attribute
 ------------------------------------
 
 In order to add error to the attribute:
