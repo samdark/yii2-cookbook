@@ -13,26 +13,47 @@ For example,
 
 ## Redirecting to no-slash URLs
 
+In order to prefer no-slash URLs add the following to `config/main.php` (or whatever your main application config file is):
+
 ```php
-'on beforeRequest' => function () {
-    $pathInfo = Yii::$app->request->pathInfo;
-    if (!empty($pathInfo) && substr($pathInfo, -1) === '/') {
-        Yii::$app->response->redirect('/' . substr(rtrim($pathInfo), 0, -1), 301);
-    }
-},
+return [
+    ...
+
+    'on beforeRequest' => function () {
+        $pathInfo = Yii::$app->request->pathInfo;
+        if (!empty($pathInfo) && substr($pathInfo, -1) === '/') {
+            Yii::$app->response->redirect('/' . substr(rtrim($pathInfo), 0, -1), 301);
+        }
+    },
+
+    ...
+];
 ```
 
 
 ## Redirecting to slash URLs
 
+In order to prefer slash URLs add the following to `config/main.php` (or whatever your main application config file is):
 
 ```php
-'on beforeRequest' => function () {
-    $pathInfo = Yii::$app->request->pathInfo;
-    if (!empty($pathInfo) && substr($pathInfo, -1) !== '/') {
-        Yii::$app->response->redirect('/' . rtrim($pathInfo) . '/', 301);
-    }
-},
+return [
+    ...
+    
+    'on beforeRequest' => function () {
+        $pathInfo = Yii::$app->request->pathInfo;
+        if (!empty($pathInfo) && substr($pathInfo, -1) !== '/') {
+            Yii::$app->response->redirect('/' . rtrim($pathInfo) . '/', 301);
+        }
+    },
+    
+    ...
+];
 ```
 
-TODO: handling it via webserver
+## Redirecting via nginx
+
+TODO
+
+## Redirecting via Apache
+
+TODO
