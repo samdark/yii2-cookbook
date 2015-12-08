@@ -89,7 +89,7 @@ i18n
 
 - General best practices
 - [Selecting application language](i18n-selecting-application-language.md)
-- Translating content
+- [Using IDs as translation source](i18n-using-ids-as-translation-source.md)
 
 
 Performance
