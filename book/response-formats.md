@@ -232,3 +232,42 @@ return [
     'hello' => 'world!',
 ];
 ```
+
+Via use filters of controller
+----------------------
+
+You can use the `ContentNegotiator` filter of controller to set formats of response also:
+```
+public function behaviors()
+{
+    return [
+        // ...
+        'contentNegotiator' => [
+            'class' => \yii\filters\ContentNegotiator::className(),
+            'only' => ['index', 'view'],
+            'formatParam' => '_format',
+            'formats' => [
+                'application/json' => \yii\web\Response::FORMAT_JSON,
+                'application/xml' => \yii\web\Response::FORMAT_XML,
+            ],
+        ],
+    ];
+}
+
+public function actionIndex()
+{
+    $users = \app\models\User::find()->all();
+    return $users;
+}
+
+public function actionView($id)
+{
+    $user = \app\models\User::find($id);
+    return $user;
+}
+```
+
+and follow by links to getting page of various formats:
+
+`/index.php?r=user/index&_format=xml`
+`/index.php?r=user/index&_format=json`
