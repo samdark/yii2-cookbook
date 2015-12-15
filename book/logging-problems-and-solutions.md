@@ -20,6 +20,7 @@ useful. Let's implement it.
                 'class' => 'yii\log\FileTarget',
                 'categories' => ['yii\web\HttpException:404'],
                 'levels' => ['error', 'warning'],
+                'logFile' => '@runtime/logs/404.log',
             ],
             'email' => [
                 'class' => 'yii\log\EmailTarget',
