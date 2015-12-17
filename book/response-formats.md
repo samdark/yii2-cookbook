@@ -233,10 +233,12 @@ return [
 ];
 ```
 
-Via use filters of controller
-----------------------
+Choosing format based on content type requested
+-----------------------------------------------
 
-You can use the `ContentNegotiator` filter of controller to set formats of response also:
+You can use the `ContentNegotiator` controller filter in order to choose format based on what is requested. In order
+to do so you need to implement `behaviors` method in controller:
+
 ```
 public function behaviors()
 {
@@ -267,7 +269,7 @@ public function actionView($id)
 }
 ```
 
-and follow by links to getting page of various formats:
+That's it. Now you can test it via the following URLs:
 
 `/index.php?r=user/index&_format=xml`
 `/index.php?r=user/index&_format=json`
