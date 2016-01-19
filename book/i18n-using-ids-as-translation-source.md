@@ -1,4 +1,4 @@
-Using IDs as tranaslation source
+Using IDs as translation source
 ================================
 
 Default way of translating content in Yii is to use English as a source language. It is quite convenient but there's another convenient
