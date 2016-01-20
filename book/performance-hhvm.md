@@ -86,8 +86,7 @@ Error reporting
 ---------------
 
 HHVM behavior about errors is different than PHP one so by default you're getting nothing but a blank white screen instead
-of an error. You won't get beatiful Yii errors when using HHVM but getting at least something is possible by adding the
-following to HHVM config:
+of an error. Add the following to HHVM config to fix it:
 
 ```
 hhvm.debug.server_error_message = true
