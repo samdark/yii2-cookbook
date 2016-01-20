@@ -62,8 +62,38 @@ return [
 
 ## Redirecting via nginx
 
-TODO
+Redirecting to no-slash URLs.
+
+```
+location / {
+    rewrite ^(.*)/$ $1 permanent;
+    try_files $uri $uri/ /index.php?$args;
+}
+```
+
+Redirecting to slash URLs.
+
+```
+location / {
+    rewrite ^(.*[^/])$ $1/ permanent;
+    try_files $uri $uri/ /index.php?$args;
+}
+```
 
 ## Redirecting via Apache
 
-TODO
+Redirecting to no-slash URLs.
+
+```
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)/$ /$1 [L,R=301]
+```
+
+Redirecting to slash URLs.
+
+```
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*[^/])$ /$1/ [L,R=301]
+```
