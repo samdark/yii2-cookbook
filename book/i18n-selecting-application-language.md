@@ -64,7 +64,7 @@ In order to use the component you should specify it in the application config li
 return [
     'bootstrap' => [
         [
-            'class' => app\components\LanguageSelector::className(),
+            'class' => 'app\components\LanguageSelector',
             'supportedLanguages' => ['en_US', 'ru_RU'],
         ],
     ],
@@ -174,7 +174,7 @@ return [
     'components' => [
         'urlManager' => [
            'ruleConfig' => [
-                'class' => app\components\LanguageUrlRule::className()
+                'class' => 'app\components\LanguageUrlRule'
             ],
         ],
     ],
