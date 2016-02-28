@@ -28,6 +28,7 @@ return [
                 $url .= '?' . $query;
             }
             Yii::$app->response->redirect($url, 301);
+            Yii::$app->end();
         }
     },
 
@@ -53,6 +54,7 @@ return [
                 $url .= '?' . $query;
             }
             Yii::$app->response->redirect($url, 301);
+            Yii::$app->end();
         }
     },
     
