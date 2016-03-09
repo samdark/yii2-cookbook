@@ -141,7 +141,7 @@ their parents. When called this method saves connections immediately.
   the same methods so hierarchy is built using exactly the same code.
   
 In case your application isn't using database at all or you don't want to use migrations, you can do the same in a console
-command:
+command. For basic project template that would be `commands\RbacController.php`:
 
 ```php
 <?php
@@ -182,11 +182,13 @@ class RbacController extends Controller
 }
 ```
 
+The command above could be called as `./yii rbac/init`.
+
 ## Assigning role to user
 
 Since our default user doesn't have any role we don't need to worry about assigning it.
 User role management could be implemented either in admin panel or in console. Since our admins are
-cool guys, we'll use console:
+cool guys, we'll create console contoller `commands\RbacController.php`:
 
 ```php
 <?php
@@ -220,7 +222,12 @@ to a user by ID. Again, it doesn't matter if PHP backend or database backend is 
 Also it would be exactly the same assignment in case of implementing admin UI or in case when you need role right away
 and assigning it right after user is successfully singed up.
 
-Sign up three new users and assign two of them `admin` and `moderator` roles respectively.
+Sign up three new users and assign two of them `admin` and `moderator` roles respectively:
+
+```php
+./yii rbac/assign admin qiang
+./yii rbac/assign moderator alex
+```
 
 ## Checking access
 
