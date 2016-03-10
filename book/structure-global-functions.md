@@ -25,6 +25,19 @@ $app->run();
 Note that we're requiring it after including config and creating application instance. That allows you to use config
 and application which is needed for many functions.
 
+Also you can do it in `composer.json`:
+
+```json
+"autoload": {
+    "files": [
+        "functions.php"
+    ]
+},
+```
+
+Note that after add this section you need run `composer update`.
+
+
 Function ideas
 --------------
 
