@@ -51,9 +51,9 @@ Security
 
 - A safe approach to passwords explained
 - SQL injection
-- XSS
+- [XSS](xss.md)
 - [RBAC](security-rbac.md)
-- CSRF
+- [CSRF](csrf.md)
 
 Structuring and organizing code
 -------------------------------
