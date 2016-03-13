@@ -1,46 +1,50 @@
 CSRF
-================
+====
 
-Cross-site request Forgery (CSRF) is a typical web application type of vulnerability. It is based on 
-user authentication on a trusted site. User can visited malicious site and this site can imitate user requests 
-to the trusted site through web browser. For example a user password can be changed or some funds is transferred.
+Cross-site request Forgery (CSRF) is one of a typical web application vulnerabilities. It's based on the assumption that
+user may be authenticated at some legitimate website. Then he's visiting attacker's website which issues requests to
+legitimate website using JavaScript code, a form, `<img src="` tag or any other means. This way attacker could, for
+example, reset victim's password or transfer funds from his bank account (in case bank website isn't secure, of course).
 
-[General recommendation](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_%28CSRF%29_Prevention_Cheat_Sheet) to prevent
-is to use Synchronizer Token Pattern. And Yii provides this solution by default.
+[One of the ways](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_%28CSRF%29_Prevention_Cheat_Sheet)
+to prevent this type of attacks is to use a special token to validate request origin. Yii does it by default.
+You can try it by adding a simple form to you view and submitting it:
 
-You can easily try this adding a simple form to you view and try to submit it:
 ```
 <form method="POST">
     <input type="submit" value="ok!">
 </form>
 ```
 
-
-
-For every request Yii generates a special unique token. And you have to send it with your request data.
-So if you make a request Yii compare generated and received tokens. If they match Yii continue to handle request. 
-If not or CSRF token field is absent an error is occurred:
+You'll get the following error:
 
 ```
 Bad Request (#400)
 Unable to verify your data submission. 
 ```
 
+This is because for every request Yii generates a special unique token that you have to send with your request data.
+So when you make a request Yii compares generated and received tokens. If they match Yii continues to handle request.
+If they don't match or in case CSRF token is missing in request data, an error is raised.
 
-Malicious site doesn't know this token so can't imitate request and harm your security.
+The token generated isn't known to attacker website so it can't make requests on your behalf.
 
-Let's try this form:
+An important thing to note is about request methods such as `GET`. Let's add the following form and submit it:
+
 ```
 <form method="GET">
     <input type="submit" value="ok!">
 </form>
 ```
-No error is occurred. This is because CSRF protection works only for unsafe request methods (PUT, POST, DELETE).
 
-Disabling CSRF protection
-----------------
+No error has occurred. This is because CSRF protection works only for unsafe request methods such `PUT`, `POST` or
+`DELETE`. That's why in order to stay safe your application should never ever use `GET` requests to change application
+state.
 
-Yii Controller property $enableCsrfValidation is true by default. You can disable CSRF validation by setting:
+## Disabling CSRF protection
+
+In some cases you may need to disable CSRF validation. In order to do it set `$enableCsrfValidation` Controller property
+to `false`:
 
 ```php
 class MyController extends Controller
@@ -48,7 +52,8 @@ class MyController extends Controller
     public $enableCsrfValidation = false;
 ```
 
-Or disable for special action:
+In order to do the same for a certain action use the following code:
+
 ```php
 class MyController extends Controller
 {
@@ -61,17 +66,13 @@ class MyController extends Controller
     }
 ```
 
-In some cases this is helpful. See this recipe: [Handling incoming third party POST requests](incoming-post.md).
-For every `ActiveForm` a hidden field including this token is added automatically and it is not necessary for you
-to worry about. But situation is different if you create your own form.
+See [handling incoming third party POST requests](incoming-post.md) for details.
 
-Adding CSRF protection 
-----------------
+## Adding CSRF protection
 
-it is not a good idea to disable protection in order to get rid of 'annoying' errors.
-It is very simple to provide CSRF token for your form.
+CSRF protection is enabled by default so what you need is to submit a token along with all your requests. Usually it's
+done via hidden field:
 
-Let's add a necessary hidden field to our sample form:
 ```
 <form method="POST">
     <input id="form-token" type="hidden" name="<?=Yii::$app->request->csrfParam?>"
@@ -80,11 +81,9 @@ Let's add a necessary hidden field to our sample form:
 </form>
 ```
 
-Try to send this form and no error is occurred.
+In case `ActiveForm` is used, token is added automatically.
 
-
-See also
---------
+## See also
 
 - [OWASP article about CSRF](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_%28CSRF%29_Prevention_Cheat_Sheet)
 - [Handling incoming third party POST requests](incoming-post.md).

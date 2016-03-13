@@ -1,109 +1,63 @@
 XSS
-================
+===
 
-Cross-site scripting (XSS) is a typical web application type of vulnerability. It allows attacker to inject client-side
-script into your site web pages. For example, your site has guest book. Some user can add this text as a comment:
+Cross-site scripting (XSS) is a web application vulnerability caused by insufficient output escaping. It allows attacker
+to inject JavaScript code into your site pages. For example, if your website has comments, an attacker may add the
+following text as a comment:
 
 ```javascript
-<script>
-    alert('hello from hacker')
-<script>
+<script>alert('Hello from hacker ;)');</script>
 ```
-If you allow your web site to publish a comment 'as is' then every user who visits your guest book will see 
-'Hello from hacker' alert box.
 
-Here is a very simple example.
+If there's no filtering and comment is published as is, every user who visits the page will get
+"Hello from hacker" alert box which means JavaScript is executed. And with JavaScript attacker can do virtually anything
+valid user can.
 
-Let's add to controller:
+That's how it typically looks in Yii. In controller we're getting data and passing it to view:
 
 ```php
 public function actionIndex()
 {
-    $post = '<script>alert("client script injection example")</script>';
-    return $this->render('index', [
-    'post'=>$post,
+    $data = '<script>alert("injection example")</script>';
+        return $this->render('index', [
+        'data' => $data,
     ]);
 }
 ```
-Then let's add to index.php view:
+
+And in `index.php` view we output data without any escaping:
 
 ```php
 echo $post;
 ```
 
-If you go to your site main page you will see 'client script injection example' alert. Thus there is a possibility
-to inject script into your application. For example php session cookie can be stolen this way.
+That's it. We're vulnerable. Visit your website main page you will see "injection example" alert.
 
-How to prevent XSS?
+Next you'll learn how to prevent it.
 
-PHP built-in function
-----------------
+## Basic output escaping
 
-You can use `strip_tags` function:
-```php
-public function actionIndex()
-{
-    $post = '<script>alert("client script injection example")</script>';
-    
-    $post = strip_tags($post); // here we do it 
-    return $this->render('index', [
-    'post'=>$post,
-    ]);
-}
-```
+If you're sure you'll have just text in your data, you can escape it in the view with `Html::encode()` while outputting it:
 
-So instead of alert you will see `alert("client script injection example")` line as a comment message.
+ ```php
+ echo Html::encode($post);
+ ```
 
-But you do not want to show/save in DB such `comments`. How to check is a comment an XSS or not?
+## Dealing with HTML output
 
-HtmlPurifier
-----------------
-Let's use YII2 helper class [HtmlPurifier](http://www.yiiframework.com/doc-2.0/yii-helpers-basehtmlpurifier.html).
-
-Modify your sample action code:
-```php
-public function actionIndex()
-{
-    $post = '<script>alert("client script injection example")</script>';
-    $post = HtmlPurifier::process($post); // here we do it. Now $post contains empty string.
-    return $this->render('index', [
-    'post'=>$post,
-    ]);
-}
-```
-
-Inside view:
-```php
-if ($post) echo $post;
-```
-
-As the result you will see nothing related to script. 
-Code above is just an example how to HtmlPurifier works, not a coding best practice. 
-You have to organize if-statements in a proper for you web application way.
-
-Note: 
-
-Maybe you have an idea to use HtmlPurifier to clean csv data input contains a lot of rows. Be ready for performance problems.
-Here is an example:  
+In case you need to output HTML entered by user it's getting a bit more complicated. Yii has a built in
+[HtmlPurifier helper](http://www.yiiframework.com/doc-2.0/yii-helpers-basehtmlpurifier.html) which cleans up everything
+dangerous from HTML. In a view you may use it as the following:
 
 ```php
-$a = [];
-for ($i = 0; $i < 1000; $i++) {
-    $a[] = $i;
-}
-$time = microtime(1);
-foreach($a as &$item) {
-    $item = HtmlPurifier::process($item);
-}
-echo microtime(1) - $time;
+echo HtmlPurifier::process($post);
 ```
 
-HtmlPurifier is using a lot of regular expressions to clean the request. In example above script execution time is around 4 seconds.
-If array is bigger then such cleaning can be a main bottleneck for your performance.
+> Note: HtmlPurifier isn't fast so consider caching what's produced by `HtmlPurifier` not to call it too often.
 
 See also
 --------
 
-- [OWASP article about XSS](https://www.owasp.org/index.php/Cross-site_Scripting_%28XSS%29)
-- [Yii2 helper class HtmlPurifier](http://www.yiiframework.com/doc-2.0/yii-helpers-basehtmlpurifier.html).
-- [HtmlPurifier web site](http://htmlpurifier.org)
+- [OWASP article about XSS](https://www.owasp.org/index.php/Cross-site_Scripting_%28XSS%29).
+- [HtmlPurifier helper class](http://www.yiiframework.com/doc-2.0/yii-helpers-basehtmlpurifier.html).
+- [HtmlPurifier website](http://htmlpurifier.org).
