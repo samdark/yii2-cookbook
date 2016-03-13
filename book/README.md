@@ -36,7 +36,7 @@ SEO essentials
 - [Enable pretty URLs](enable-pretty-urls.md)
 - [Pagination with pretty URLs](pagination-pretty-urls.md)
 - [Adding SEO tags](adding-seo-tags.md)
-- Canonical URLs
+- [Canonical URLs](canonical-urls)
 - [Using slugs](using-slugs.md)
 - [Handling trailing slash in URLs](handling-trailing-slash-in-urls.md)
 
@@ -51,9 +51,9 @@ Security
 
 - A safe approach to passwords explained
 - SQL injection
-- XSS
+- [XSS](xss.md)
 - [RBAC](security-rbac.md)
-- CSRF
+- [CSRF](csrf.md)
 
 Structuring and organizing code
 -------------------------------
