@@ -1,92 +1,46 @@
 Canonical URLs
-===============
+==============
 
-Sometimes it is convenient or necessary for the same content to be accessed through
-multiple URLS. For example:
-If we have only php_and_mysql books then page content will be the same for such URLs:
-- `http://webproject.ru/books?category=php`
-- `http://webproject.ru/books?category=mysql`
+Because of many reasons the same or nearly the same page content often is accessible via multiple URLs. There are
+valid cases for it such as viewing an article within a category and not so valid ones. For end user it doesn't really
+matter much but still it could be a problem because of search engines because either you might get wrong URLs preferred
+or, in the worst case, you might get penalized.
 
-It is ok for you shop but not good for the search engines. But crawler time to index your site is always limited.
-So crawler will waste its indexing time on useless for your search appearance pages.
+One way to solve it is to mark one of URLs as a primary or, as it called, canonical, one you may use `<link rel="canonical"` tag
+in the page head.
 
-There are different ways to solve this problem.
+> Note: In the above we assume that [pretty URLs are enabled](enable-pretty-urls.md).
 
-For all examples pretty URLs are enabled. Please refer to [Enable pretty URLs](enable-pretty-urls.md)
+Let's imagine we have two pages with similar or nearly similar content:
 
-## Set preferred URL with rel="canonical" link element
+- `http://example.com/item1`
+- `http://example.com/item2`
 
-Mark preferred (most valuable for SEO) URL with this tag and help search crawler to distribute limited indexing time
-on other pages.
+Our goal is to mark first one as canonical. Another one would be still accessible to end user. The process of adding
+SEO meta-tags is descibed in "[adding SEO tags](adding-seo-tags.md)" recipe. Adding `<link rel="canonical"` is very
+similar. In order to do it from controller action you may use the following code:
 
-Let's imagine we have two pages with mostly similar content:
-`http://webproject.ru/item1`
-`http://webproject.ru/item2`
-
-Our goal is make first link canonical but remain second link available for user.
-
-[Adding SEO tags](adding-seo-tags.md) recipe describes how add seo meta tags. Adding rel="canonical" tag is very similar.
-
-Inside controller action:
 ```php
 \Yii::$app->view->registerLinkTag(['rel' => 'canonical', 'href' => Url::to(['item1'], true)]);
 ```
 
-Or inside a view:
+In order to achieve the same from inside the view do it as follows:
+
 ```php
 $this->registerLinkTag(['rel' => 'canonical', 'href' => Url::to(['item1'], true)]);
 ```
 
-> Note: It is necessary to use absolute paths (search engine rules). Do not use relative paths.
+> Note: It is necessary to use absolute paths instead of relative ones.
 
-## Use 301 redirect to avoid duplications
-
-Similar case is explained in recipe of [Handling trailing slash in URLs](handling-trailing-slash-in-urls.md)
-
-Let's imagine at first we have a page `http://webproject.ru/item2`.
-
-But then we permanently move a content to `http://webproject.ru/item1`.
-
-There is a risk that some users (or search crawlers) have already saved `http://webproject.ru/item2` somewhere 
-(bookmarks, search engine base, web site article, etc.)
-
-So we can't just disable the link `http://webproject.ru/item2`.
-
-In this case use 301 redirect.
+As an alternative to `Url::to()` you can use `Url::canonical()` such as
 
 ```php
-class MyController extends Controller
-{
-    public function beforeAction($action)
-    {
-        if (in_array($action->id, ['item2'])) {
-            Yii::$app->response->redirect(Url::to(['item1']), 301);
-            Yii::$app->end();
-        }
-        return parent::beforeAction($action);
-    }
+$this->registerLinkTag(['rel' => 'canonical', 'href' => Url::canonical()]);
 ```
 
-For the further convenience you can determine an array. So if you need to redirect another URL then add new key=>value pair:
-```php
-class MyController extends Controller
-{
-    public function beforeAction($action)
-    {
-        $toRedir = [
-            'item2' => 'item1',
-            'item3' => 'item1',
-        ];
-
-        if (isset($toRedir[$action->id])) {
-            Yii::$app->response->redirect(Url::to([$toRedir[$action->id]]), 301);
-            Yii::$app->end();
-        }
-        return parent::beforeAction($action);
-    }
-```
+The line above could be added to layout. `Url::canonical()` generates the tag based on current controller route and
+action parameters (the ones present in the method signature).
 
 ## See also
 
-- [Google article about canonical URLs](https://support.google.com/webmasters/answer/139066?hl=en)
-- [Handling trailing slash in URLs](handling-trailing-slash-in-urls.md)
+- [Google article about canonical URLs](https://support.google.com/webmasters/answer/139066?hl=en).
