@@ -42,14 +42,7 @@ $config = [
     'components' => [
         // ...
         'assetManager' => [
-            'bundles' => [
-                'yii\web\JqueryAsset' => false,
-                'yii\bootstrap\BootstrapAsset' => false,
-                'yii\web\YiiAsset' => false,
-                'yii\validators\ValidationAsset' => false,
-                'yii\widgets\ActiveFormAsset' => false,
-                // ... more bundles you want to disable
-            ],
+            'bundles' => false,
         ],
     ],
 ];
@@ -58,9 +51,6 @@ $config = [
 
 return $config;
 ```
-
-> Note: Alternatively you may set `bundles` to `false` to turn off everything but that would result in
-> breaking debug toolbar.
 
 Edit layout file `views/layouts/main.php`. After `<?= Html::csrfMetaTags() ?>` add:
 
