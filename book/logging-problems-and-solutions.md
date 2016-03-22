@@ -99,3 +99,37 @@ After this you are able to write logs to separate files adding category name to 
 \Yii::beginProfile('add to basket', 'basket');
 \Yii::endProfile('add to basket', 'basket');
 ```
+
+## Disable logging
+
+### Problem
+You want to receive email when new user signs up. But you don't want to trace yourself sign up tests.
+
+### Solution
+
+At first mark logging target inside `config.php` by key:
+```php
+'log' => [
+    // ...
+    'targets' => [
+            // email is a key for our target
+            'email' => [  
+                'class' => 'yii\log\EmailTarget',
+                'except' => ['yii\web\HttpException:404'],
+                'levels' => ['info'],
+                'message' => ['from' => 'robot@example.com', 'to' => 'admin@example.com'],
+            ],
+    // ...
+```
+
+Then, for example, inside `Controller` `beforeAction` you can create a condition:
+```php
+    public function beforeAction($action)
+    {
+        // '127.0.0.1' - replace by your IP address
+        if (in_array(@$_SERVER['REMOTE_ADDR'], ['127.0.0.1'])) {
+            Yii::$app->log->targets['email']->enabled = false; // Here we disable our log target
+        }
+        return parent::beforeAction($action);
+    }
+```
