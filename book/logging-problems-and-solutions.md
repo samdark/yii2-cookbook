@@ -115,7 +115,6 @@ At first mark logging target inside `config.php` by key:
             // email is a key for our target
             'email' => [  
                 'class' => 'yii\log\EmailTarget',
-                'except' => ['yii\web\HttpException:404'],
                 'levels' => ['info'],
                 'message' => ['from' => 'robot@example.com', 'to' => 'admin@example.com'],
             ],
