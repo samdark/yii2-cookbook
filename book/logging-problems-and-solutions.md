@@ -102,7 +102,7 @@ After this you are able to write logs to separate files adding category name to 
 
 ## Disable logging
 
-### Problem
+### Problem №1
 You want to receive email when new user signs up. But you don't want to trace yourself sign up tests.
 
 ### Solution
@@ -132,3 +132,81 @@ Then, for example, inside `Controller` `beforeAction` you can create a condition
         return parent::beforeAction($action);
     }
 ```
+
+### Problem №2
+You want to log  concrete server error but display only broad error explanation to the end user.
+
+
+### Solution
+If you catch an error appropriate log target doesn't work.
+Let's say you have such log target configuration: 
+```php
+'components' => [
+    'log' => [
+        'targets' => [
+            'file' => [
+                'class' => 'yii\log\FileTarget',
+                'levels' => ['error', 'warning'],
+                'logFile' => '@runtime/logs/error.log',
+            ],
+        ],
+    ],
+],
+```
+
+As an example let's add such code line inside `actionIndex`:
+```php
+    public function actionIndex()
+    {
+        throw new ServerErrorHttpException('There is a problem with your code, programmer');
+        // ...
+```
+
+Go to `index` page and you will see this message in the browser and in the `error.log` file.
+
+Let's modify our `actionIndex`:
+
+```php
+    public function actionIndex()
+    {
+        try {
+            throw new ServerErrorHttpException('There is a problem with your code, programmer'); // here is our code line now
+        }
+        catch(ServerErrorHttpException $ex) {
+            Yii::error($ex->getMessage()); // concrete message for us
+            throw new ServerErrorHttpException('There is a problem with our server. Sorry'); // broad message for the end user
+        }
+    // ..
+```
+As the result in the browser you will see `There is a problem with our server. Sorry`. But in the `error.log`
+you will see **two** both error messages. For our case second message is not necessary to log.
+
+Let's add `category` for our log target and for log command:
+
+For `config`:
+```php
+'file' => [
+    'class' => 'yii\log\FileTarget',
+    'levels' => ['error', 'warning'],
+    'categories' => ['serverError'], // here is a modification - category
+    'logFile' => '@runtime/logs/error.log',
+],
+```
+For `actionIndex`:
+```php
+catch(ServerErrorHttpException $ex) {
+    Yii::error($ex->getMessage(), 'serverError'); // concrete message for us
+    throw new ServerErrorHttpException('There is a problem with our server. Sorry'); // broad message for the end user
+}
+```
+
+As the result in the `error.log` you will see only the error related to `There is a problem with your code, programmer`.
+
+
+### Even more
+If there is an bad request (user side) error you may want to display error message 'as is'. You can easily do it because
+our catch block works only for `ServerErrorHttpException` error types. So you are able to throw something like this:
+```php
+throw new BadRequestHttpException('Email address you provide is invalid');
+```
+As the result end user will see the message 'as is' in his browser.
