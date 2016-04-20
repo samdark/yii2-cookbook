@@ -30,7 +30,11 @@ Now in `config/urls.php` add the following content:
 ```php
 <?php
 return [
-    'products/<categories:.*>' => 'product/category',
+    [
+        'pattern' => 'products/<categories:.*>',
+        'route' => 'product/category',
+        'encodeParams' => false,
+    ],
 ];
 ```
 
