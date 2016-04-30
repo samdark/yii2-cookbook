@@ -36,6 +36,11 @@ In order to read a cookie use the following code:
 $value = \Yii::$app->getRequest()->getCookies()->getValue('my_cookie');
 ```
 
+Where to get and set cookies?
+-----------------------------
+
+Cookies are part of HTTP request so it's a good idea to do both in controller which responsibility is exactly dealing with request and response.
+
 Cookies for subdomains
 ----------------------
 
