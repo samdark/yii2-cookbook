@@ -3,11 +3,11 @@ Working With Multiple Records
 
 Sometimes one request can create or affect several records in one or more tables
 in such cases its advisable to follow [ACID](https://en.wikipedia.org/wiki/ACID)
-rules. Yii2 supports transactions, isolation levels, and allow you to
-validate data independently, so following the ACID rules is simple.
+properties. Yii2 supports transactions, isolation levels, and allow you to
+validate data independently.
 
 For example when creating a credit, you also need to store the credit references
-and file associated to it.
+and files associated to the credit.
 
 ```php
 public function actionCreate()
@@ -65,9 +65,9 @@ public function actionCreate()
 
                 foreach ($modelFiles as $newModel) {
                     $newModel->credit_id = $model->id;
-                    $newModel->file->saveAs(
-                        '@web/uploads/' . $model->file->name
-                    );
+                    $newModel->file->saveAs(Yii::getAlias(
+                        '@webroot/uploads/' . $model->file->name
+                    ));
                     $newModel->save(false);
                 }
 
@@ -144,7 +144,7 @@ saved.
 5.1 Catch any exception from the validation or saving and execute `rollBack()`
 
 For debugging purposes we throw a new exception with the previous one so it can 
-get caught by the yii2 exception manager.
+get caught by the Yii2 exception manager.
 
 6 If no exception is thrown then `commit()` the changes.
 
@@ -158,7 +158,6 @@ Lets say you have two models `Credit` with attributes `id` and `amount`, and a
 update the `Credit` amount when a related `CreditPayment` is created.
 
 ```php
-
 class CreditPayment extends ActiveRecord
 {
     public function afterSave($insert, $changedAttributes)
@@ -195,7 +194,7 @@ method `yii\db\ActiveRecord::transactions()`
 public function transactions()
 {
     return [
-        self::SCENARIO_DEFAULT => OP_INSERT,
+        self::SCENARIO_DEFAULT => self::OP_INSERT,
     ];
 }
 ```
