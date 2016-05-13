@@ -99,3 +99,125 @@ After this you are able to write logs to separate files adding category name to 
 \Yii::beginProfile('add to basket', 'basket');
 \Yii::endProfile('add to basket', 'basket');
 ```
+
+## Disable logging of youself actions
+
+### Problem
+You want to receive email when new user signs up. But you don't want to trace yourself sign up tests.
+
+### Solution
+
+At first mark logging target inside `config.php` by key:
+```php
+'log' => [
+    // ...
+    'targets' => [
+            // email is a key for our target
+            'email' => [  
+                'class' => 'yii\log\EmailTarget',
+                'levels' => ['info'],
+                'message' => ['from' => 'robot@example.com', 'to' => 'admin@example.com'],
+            ],
+    // ...
+```
+
+Then, for example, inside `Controller` `beforeAction` you can create a condition:
+```php
+    public function beforeAction($action)
+    {
+        // '127.0.0.1' - replace by your IP address
+        if (in_array(@$_SERVER['REMOTE_ADDR'], ['127.0.0.1'])) {
+            Yii::$app->log->targets['email']->enabled = false; // Here we disable our log target
+        }
+        return parent::beforeAction($action);
+    }
+```
+
+## Log everything but display different error messages
+
+### Problem
+You want to log  concrete server error but display only broad error explanation to the end user.
+
+
+### Solution
+If you catch an error appropriate log target doesn't work.
+Let's say you have such log target configuration: 
+```php
+'components' => [
+    'log' => [
+        'targets' => [
+            'file' => [
+                'class' => 'yii\log\FileTarget',
+                'levels' => ['error', 'warning'],
+                'logFile' => '@runtime/logs/error.log',
+            ],
+        ],
+    ],
+],
+```
+
+As an example let's add such code line inside `actionIndex`:
+```php
+    public function actionIndex()
+    {
+        throw new ServerErrorHttpException('Hey! Coding problems!');
+        // ...
+```
+
+Go to `index` page and you will see this message in the browser and in the `error.log` file.
+
+Let's modify our `actionIndex`:
+
+```php
+    public function actionIndex()
+    {
+        try {
+            throw new ServerErrorHttpException('Hey! Coding problems!'); // here is our code line now
+        }
+        catch(ServerErrorHttpException $ex) {
+            Yii::error($ex->getMessage()); // concrete message for us
+            throw new ServerErrorHttpException('Server problem, sorry.'); // broad message for the end user
+        }
+    // ..
+```
+As the result in the browser you will see `Server problem, sorry.`. But in the `error.log`
+you will see **both** error messages. In our case second message is not necessary to log.
+
+Let's add `category` for our log target and for logging command.
+
+For `config`:
+```php
+'file' => [
+    'class' => 'yii\log\FileTarget',
+    'levels' => ['error', 'warning'],
+    'categories' => ['serverError'], // category is added
+    'logFile' => '@runtime/logs/error.log',
+],
+```
+For `actionIndex`:
+```php
+catch(ServerErrorHttpException $ex) {
+    Yii::error($ex->getMessage(), 'serverError'); // category is added
+    throw new ServerErrorHttpException('Server problem, sorry.');
+}
+```
+
+As the result in the `error.log` you will see only the error related to `Hey! Coding problems!`.
+
+
+### Even more
+If there is an bad request (user side) error you may want to display error message 'as is'. You can easily do it because
+our catch block works only for `ServerErrorHttpException` error types. So you are able to throw something like this:
+```php
+throw new BadRequestHttpException('Email address you provide is invalid');
+```
+As the result end user will see the message 'as is' in his browser.
+
+See also
+--------
+- [Yii2 guide - handling Errors](http://www.yiiframework.com/doc-2.0/guide-runtime-handling-errors.html).
+- [Yii2 guide - logging](http://www.yiiframework.com/doc-2.0/guide-runtime-logging.html).
+
+
+
+
