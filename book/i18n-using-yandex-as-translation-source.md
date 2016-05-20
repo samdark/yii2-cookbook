@@ -11,6 +11,10 @@ First of all we need catch MissingTranslationEvent. It is more convenient to wra
 We use DbMessageSource to store traslated messages. It is necessary to perform the appropriate migration.
 
 ```php
+namespace common\components;
+
+use yii\helpers\ArrayHelper;
+
 class MachineTranslation extends Component
 {
     /**
@@ -37,20 +41,20 @@ class MachineTranslation extends Component
             'lang' => "$sourceLang-$targetLang",
         ]));
         if ($result = json_decode($content, true)) {
-			$event->translatedMessage = isset($result['text'][0]) ? $result['text'][0] : null;
-			if ($event->translatedMessage) {
-				$db->createCommand()->insert($messageSource->sourceMessageTable, [
-					'category' => $event->category, 
-					'message' => $event->message            
+		$event->translatedMessage = ArrayHelper::getValue($result, 'text.0');
+		if ($event->translatedMessage) {
+			$db->createCommand()->insert($messageSource->sourceMessageTable, [
+				'category' => $event->category, 
+				'message' => $event->message            
+			])->execute();
+			if ($id = $db->getLastInsertId()) {
+				$db->createCommand()->insert($messageSource->messageTable, [
+					'id' => $id,
+					'language' => $event->language,
+					'translation' => $event->translatedMessage
 				])->execute();
-				if ($id = $db->getLastInsertId()) {
-					$db->createCommand()->insert($messageSource->messageTable, [
-						'id' => $id,
-						'language' => $event->language,
-						'translation' => $event->translatedMessage
-					])->execute();
-				}
 			}
+		}
         }
         if (!$event->translatedMessage) {
             $event->translatedMessage = "@MISSING: {$event->category}.{$event->message} FOR LANGUAGE {$event->language} @";
