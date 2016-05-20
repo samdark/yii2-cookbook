@@ -36,7 +36,7 @@ class MachineTranslation extends Component
             'format' => 'plain',
             'lang' => "$sourceLang-$targetLang",
         ]));
-        if ($result = json_decode($content)) {
+        if ($result = json_decode($content, true)) {
 			$event->translatedMessage = isset($result['text'][0]) ? $result['text'][0] : null;
 			if ($event->translatedMessage) {
 				$db->createCommand()->insert($messageSource->sourceMessageTable, [
