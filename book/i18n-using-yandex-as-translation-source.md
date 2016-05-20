@@ -18,10 +18,10 @@ use yii\helpers\ArrayHelper;
 class MachineTranslation extends Component
 {
         /**
-	 * Provider api key.
-	 */
+         * Provider api key.
+         */
         public $apiKey;
-    
+
         /**
          * @param MissingTranslationEvent $event
          */
