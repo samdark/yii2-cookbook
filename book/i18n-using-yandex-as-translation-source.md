@@ -10,6 +10,7 @@ I do not recommend to use machine translation as production ready solution, but 
 First of all we need catch MissingTranslationEvent. It is more convenient to wrap catch method in component.
 We use DbMessageSource to store traslated messages. It is necessary to perform the appropriate migration.
 
+```php
 class MachineTranslation extends Component
 {
     /**
@@ -57,6 +58,7 @@ class MachineTranslation extends Component
         return null;
     }
 }
+```
 
 Now we need to configure new translator:
 
