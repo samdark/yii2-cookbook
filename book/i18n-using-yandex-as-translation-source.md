@@ -14,6 +14,7 @@ We use DbMessageSource to store traslated messages (the appropriate database mig
 namespace common\components;
 
 use yii\helpers\ArrayHelper;
+use yii\i18n\MissingTranslationEvent;
 
 class MachineTranslation extends Component
 {
@@ -74,7 +75,7 @@ Now we need to configure new translator:
 			'machine' => [
 				'class' => 'yii\i18n\DbMessageSource',
 				'on missingTranslation' => [
-					new MachineTranslation([
+					new common\components\MachineTranslation([
 						'apiKey' => 'some api key',
 					]), 
 					'handleMissingTranslation'
