@@ -16,7 +16,7 @@ namespace common\components;
 use yii\helpers\ArrayHelper;
 use yii\i18n\MissingTranslationEvent;
 
-class MachineTranslation extends Component
+class MachineTranslation extends \yii\base\Component
 {
         /**
          * Provider api key.
