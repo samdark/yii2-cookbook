@@ -8,7 +8,7 @@ I do not recommend to use machine translation as production ready solution, but 
 ## How to do it
 
 First of all we need catch MissingTranslationEvent. It is more convenient to wrap catch method in component.
-We use DbMessageSource to store traslated messages. It is necessary to perform the appropriate migration.
+We use DbMessageSource to store traslated messages (the appropriate database migration is needed).
 
 ```php
 namespace common\components;
