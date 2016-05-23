@@ -8,18 +8,20 @@ I do not recommend to use machine translation as production ready solution, but 
 ## How to do it
 
 First of all we need catch MissingTranslationEvent. It is more convenient to wrap catch method in component.
-We use DbMessageSource to store traslated messages (the appropriate database migration is needed).
+We use DbMessageSource to store translated messages ([the appropriate database migration is needed]http://www.yiiframework.com/doc-2.0/yii-i18n-dbmessagesource.html).
 
 ```php
 namespace common\components;
 
+use yii\db\Query;
 use yii\helpers\ArrayHelper;
 use yii\i18n\MissingTranslationEvent;
 
-class MachineTranslation extends \yii\base\Component
+class YandexTranslation extends \yii\base\Component
 {
         /**
-         * Provider api key.
+         * Provider api key. Get it for free at
+         * @link https://tech.yandex.com/keys/get/?service=trnsl
          */
         public $apiKey;
 
@@ -32,6 +34,7 @@ class MachineTranslation extends \yii\base\Component
                 $messageSource = $event->sender;
                 $db = $messageSource->db;
 
+                // Extract first part of "en-EN" form
                 $sourceLang = explode('-', $messageSource->sourceLanguage)[0];
                 $targetLang = explode('-', $event->language)[0];
         
@@ -44,17 +47,26 @@ class MachineTranslation extends \yii\base\Component
                 if ($result = json_decode($content, true)) {
                         $event->translatedMessage = ArrayHelper::getValue($result, 'text.0');
                         if ($event->translatedMessage) {
+                            // try to find message source
+                            $id = (new Query())->select(['id'])
+                                ->from($messageSource->sourceMessageTable)
+                                ->where(['category' => $event->category, 'message' => $event->message])
+                                ->createCommand()
+                                ->queryScalar();
+                            // if not found, insert a new one. Note: it's better to use "upsert" command (depending of the used DB engine)
+                            if (!$id) {
                                 $db->createCommand()->insert($messageSource->sourceMessageTable, [
                                         'category' => $event->category, 
                                         'message' => $event->message            
                                 ])->execute();
-                                if ($id = $db->getLastInsertId()) {
-                                        $db->createCommand()->insert($messageSource->messageTable, [
-                                                'id' => $id,
-                                                'language' => $event->language,
-                                                'translation' => $event->translatedMessage
-                                        ])->execute();
-                                }
+                                $id = $db->getLastInsertId()
+                            }
+                            // insert new translated message.
+                            $db->createCommand()->insert($messageSource->messageTable, [
+                                    'id' => $id,
+                                    'language' => $event->language,
+                                    'translation' => $event->translatedMessage
+                            ])->execute();
                         }
                 }
                 if (!$event->translatedMessage) {
@@ -65,24 +77,24 @@ class MachineTranslation extends \yii\base\Component
 }
 ```
 
-Now we need to configure new translator:
+Now we need to configure a new translator:
 
 ```php
 'components' => [
     // ...
      'i18n' => [
-		'translations' => [
-			'machine' => [
-				'class' => 'yii\i18n\DbMessageSource',
-				'on missingTranslation' => [
-					new common\components\MachineTranslation([
-						'apiKey' => 'some api key',
-					]), 
-					'handleMissingTranslation'
-				],
-			],
-		],
-	],
+        'translations' => [
+            'machine' => [
+                'class' => 'yii\i18n\DbMessageSource',
+                'on missingTranslation' => [
+                    new common\components\YandexTranslation([
+                        'apiKey' => 'some api key',
+                    ]), 
+                    'handleMissingTranslation'
+                ],
+            ],
+        ],
+    ],
 ],
 ```
 
