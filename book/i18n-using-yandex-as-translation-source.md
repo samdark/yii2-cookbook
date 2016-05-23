@@ -8,7 +8,7 @@ I do not recommend to use machine translation as production ready solution, but 
 ## How to do it
 
 First of all we need catch MissingTranslationEvent. It is more convenient to wrap catch method in component.
-We use DbMessageSource to store translated messages ([the appropriate database migration is needed]http://www.yiiframework.com/doc-2.0/yii-i18n-dbmessagesource.html).
+We use DbMessageSource to store translated messages ([the appropriate database migration is needed](http://www.yiiframework.com/doc-2.0/yii-i18n-dbmessagesource.html)).
 
 ```php
 namespace common\components;
