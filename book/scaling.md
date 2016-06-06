@@ -1,8 +1,8 @@
 # Making Your Yii2 App Scalable
 
-Applications which can suddenly gain large amounts of traffic should handle it by temporarily adding additional servers. This is called autoscaling.
+Applications which can suddenly gain large amounts of traffic should handle it by temporarily adding additional servers. This is called auto scaling.
 
-To set up an application for auto scaling, the application needs to be made stateless (no local Session or Cache storage), and the database needs to be hosted on a separate server.
+To set up an application for auto scaling, the application needs to be made stateless (generally nothing should be written directly to the application hosting server, so no local Session or Cache storage), and the database needs to be hosted on a separate server.
 
 Setting up a Yii2 application for auto scaling is fairly straight forward:
 
@@ -10,7 +10,7 @@ Setting up a Yii2 application for auto scaling is fairly straight forward:
 
 
 * Any well performing PaaS (Platform as a Service) solution that supports autoscaling, load balancing, and SQL databases such as Google Cloud (Instance Group + Load Balancer) or Amazon AWS (Elastic Beanstalk)
-* Redis or Memcached server. Easily launched on most popular PaaS platforms with [Bitnami Cloud](https://bitnami.com/cloud). Redis generally performs better over Memcached, so this page will be focusing on working with Redis.
+* Redis or Memcached server. Easily launched on popular PaaS platforms with [Bitnami Cloud](https://bitnami.com/cloud). Redis generally performs better over Memcached, so this page will be focusing on working with Redis.
 * Hosted Database server (Most PaaS platforms let you easily launch one i.e. Google SQL).
 
 ## Making your application Stateless
@@ -43,3 +43,5 @@ When the application is up and running on the temporary server, create a snapsho
 Most PaaS platforms such as Google Cloud Managed Instance Groups and Amazon Elastic Beanstalk let you configure 'start up' commands. The start up command should also install/update the application (using `git clone` or `git pull` depending on if the service image already contains the application's git or not), and a `composer update` command to install all composer packages.
 
 When the server group is set up using a disk based on the snapshot from the temporary server instance, you can remove the temporary server instance.
+
+Your server group is now configured. Set up a load balancer on your PaaS platform (i.e. Load Balancer on Google) for the server group, andset your domain's A or CNAME records to your load balancer's static IP.
