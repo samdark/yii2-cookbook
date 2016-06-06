@@ -102,6 +102,7 @@ Performance
 - Implementing backgroud tasks (cronjobs)
 - [Running Yii on HHVM](performance-hhvm.md)
 - [Caching](caching.md)
+- [Configuring a Yii2 Application for an Autoscaling Stack](scaling.md)
 
 External code
 -------------
