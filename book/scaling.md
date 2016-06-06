@@ -1,4 +1,4 @@
-# Making Your Yii2 App Scalable
+# Configuring a Yii2 Application for an Autoscaling Stack
 
 Applications which can suddenly gain large amounts of traffic should handle it by temporarily adding additional servers. This is called auto scaling.
 
