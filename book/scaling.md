@@ -1,5 +1,7 @@
 # Configuring a Yii2 Application for an Autoscaling Stack
 
+Note: These instructions are mainly focused on configuring Yii2 to be a stateless application. The deployment method is basic. More efficient deployment methods may be described in the future.
+
 Applications which can suddenly gain large amounts of traffic should handle it by temporarily adding additional servers. This is called auto scaling.
 
 To set up an application for auto scaling, the application needs to be made stateless (generally nothing should be written directly to the application hosting server, so no local Session or Cache storage), and the database needs to be hosted on a separate server.
@@ -15,10 +17,11 @@ Setting up a Yii2 application for auto scaling is fairly straight forward:
 
 ## Making your application Stateless
 
-Use a Yii2 supported Session Storage/Caching service such as Redis. Refer to the following Yii2 documention for configuring Redis for Session Storage and Caching:
+Use a Yii2 supported Session Storage/Caching/Logging service such as Redis. Refer to the following resources for further instructions:
 
  * [Yii2 Class yii\redis\Session](http://www.yiiframework.com/doc-2.0/yii-redis-session.html)
  * [Yii2 Class yii\redis\Cache](http://www.yiiframework.com/doc-2.0/yii-redis-cache.html)
+ * [Yii2 Redis Logging Component](https://github.com/JackyChan/yii2-redis-log)
 
 When you run on a PaaS platform, make sure to use the Redis server's internal IP and not the external IP. This is essential for your application's speed.
 
@@ -29,6 +32,8 @@ A redis server doesn't require much disk space. It runs on RAM. This guide recom
 Also configure your application to use your hosted database server (hosted by i.e. Google SQL).
 
 ## Configuring the Stack
+
+The instructions below may be subject to change and improvement.
 
 Set up a temporary single instance server to configure your application with.
 
