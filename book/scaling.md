@@ -41,11 +41,11 @@ The application must be deployed to the server by Git, so that multiple servers 
 
 * `git clone` the application into the configured 'www' directory
 * Set up a cron job to `git pull` the directory every minute.
-* Set up a cron job to `composer update` the directory every minute.
+* Set up a cron job to `composer install` the directory every minute.
 
 When the application is up and running on the temporary server, create a snapshot of the server and use it to create your scalable server group.
 
-Most PaaS platforms such as Google Cloud Managed Instance Groups and Amazon Elastic Beanstalk let you configure 'start up' commands. The start up command should also install/update the application (using `git clone` or `git pull` depending on if the service image already contains the application's git or not), and a `composer update` command to install all composer packages.
+Most PaaS platforms such as Google Cloud Managed Instance Groups and Amazon Elastic Beanstalk let you configure 'start up' commands. The start up command should also install/update the application (using `git clone` or `git pull` depending on if the service image already contains the application's git or not), and a `composer install` command to install all composer packages.
 
 When the server group is set up using a disk based on the snapshot from the temporary server instance, you can remove the temporary server instance.
 
