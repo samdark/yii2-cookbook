@@ -76,7 +76,7 @@ $config = [
 ];
 ```
 
-If you use HTTP caching configuration in your Apache or NGINX server to serve assets like JS/CSS/JPG/etc, you may want to enable the `appendTimestamp` so that when the assets is being updated the old asset will be invalidated in the cache.
+If you use HTTP caching configuration in your Apache or NGINX server to serve assets like JS/CSS/JPG/etc, you may want to enable the [`appendTimestamp`](http://www.yiiframework.com/doc-2.0/yii-web-assetmanager.html#%24appendTimestamp-detail) so that when an asset gets updated the old asset will be invalidated in the cache.
 
 ```php
 $config = [
@@ -90,8 +90,6 @@ $config = [
     ]
 ];
 ```
-
-This way, when you update an asset, you only need to bump the version to avoid old assets loaded by HTTP cache instead of new assets.
 
 Load balancing without server affinity increases scalability but raises one more issue regarding the assets: assets availability in all servers. Consider request **1** for a page is being received by server **A**. Server **A** will generate assets and write them in local directory. Then the HTML output returned to the browser which then generates request **2** for the asset. If you configure the server affinity, this request will hit server **A** given the server is still available and the server will return the requested asset. But in this case the request may or may not hit server **A**. It can hit server **B** that still has not generated the asset in local directory thus returning `404 Not Found`. Server **B** will eventually generate the assets. The more servers you have the longer time they need to catch up with each others and that increases the number of `404 Not Found` for the assets.
 
