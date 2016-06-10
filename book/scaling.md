@@ -65,27 +65,30 @@ A more robust solution is by configuring `hashCallback` in [AssetManager](http:/
 For example, if you deploy your code in exact path in all servers, you can configure the `hashCallback` to something like
 
 ```php
-function ($path) {
-    return hash('md4', $path);
-}
+$config = [
+    'components' => [
+       'assetManager' => [
+           'hashCallback' => function ($path) {
+               return hash('md4', $path);
+            }    
+       ]
+    ]
+];
 ```
 
-Some deployment mechanism such as [AWS OpsWorks](https://aws.amazon.com/opsworks/) will deploy your code in very different path between servers, for example using deployment timestamp or commit. You can configure your `hashCallback` to create a hash from relative path of the asset.
+If you use HTTP caching configuration in your Apache or NGINX server to serve assets like JS/CSS/JPG/etc, you may want to enable the `appendTimestamp` so that when the assets is being updated the old asset will be invalidated in the cache.
 
 ```php
-function ($path) {
-    $relativePath = str_replace(Yii::$app->basePath, '', $path);
-    return hash('md4', $relativePath);
-}
-```
-
-If you use HTTP caching configuration in your Apache or NGINX server to serve assets like JS/CSS/JPG/etc, you might want to add another factor in the hash generation such as app version.
-
-```php
-function ($path) {
-    $relativePath = str_replace(Yii::$app->basePath, '', $path);
-    return hash('md4', $relativePath .  Yii::$app->version);
-}
+$config = [
+    'components' => [
+       'assetManager' => [
+           'appendTimestamp' => true,
+           'hashCallback' => function ($path) {
+               return hash('md4', $path);
+            }    
+       ]
+    ]
+];
 ```
 
 This way, when you update an asset, you only need to bump the version to avoid old assets loaded by HTTP cache instead of new assets.
