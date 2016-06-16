@@ -173,7 +173,7 @@ class CreditPayment extends ActiveRecord
         }
 
         if ($this->credit->save(false) === false) {
-            throw new Exception('credit couldn't be update');
+            throw new Exception("credit couldn't be update");
         }
     }
 
