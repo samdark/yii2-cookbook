@@ -264,7 +264,7 @@ public function actionIndex()
 
 public function actionView($id)
 {
-    $user = \app\models\User::find($id);
+    $user = \app\models\User::findOne($id);
     return $user;
 }
 ```
