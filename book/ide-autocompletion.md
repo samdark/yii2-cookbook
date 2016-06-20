@@ -6,24 +6,8 @@ Using IDE for development is quite typical nowadays because of the comfort it pr
 Using custom Yii class
 ----------------------
 
-The best way to give IDE some hints is to use your own `Yii` file. Let's check application's `index.php`:
-
-```php
-<?php
-
-// comment out the following two lines when deployed to production
-defined('YII_DEBUG') or define('YII_DEBUG', true);
-defined('YII_ENV') or define('YII_ENV', 'dev');
-
-require(__DIR__ . '/../vendor/autoload.php');
-require(__DIR__ . '/../vendor/yiisoft/yii2/Yii.php');
-
-$config = require(__DIR__ . '/../config/web.php');
-
-(new yii\web\Application($config))->run();
-```
-
-The line `require(__DIR__ . '/../vendor/yiisoft/yii2/Yii.php');` could be changed to use our own file instead of the default one. `Yii.php` file could be the following:
+The best way to give IDE some hints is to use your own `Yii` file which isn't actually used when running code. This file could be
+named `Yii.php` and the content could be the following:
 
 ```php
 <?php
@@ -38,10 +22,6 @@ class Yii extends \yii\BaseYii
      */
     public static $app;
 }
-
-spl_autoload_register(['Yii', 'autoload'], true, true);
-Yii::$classMap = include(__DIR__ . '/vendor/yiisoft/yii2/classes.php');
-Yii::$container = new yii\di\Container;
 
 /**
  * Class BaseApplication
