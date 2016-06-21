@@ -51,7 +51,7 @@ Security
 --------
 
 - A safe approach to passwords explained
-- SQL injection
+- [SQL injection](sql-injection.md)
 - [XSS](xss.md)
 - [RBAC](security-rbac.md)
 - [CSRF](csrf.md)
