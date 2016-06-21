@@ -130,6 +130,15 @@ public static function instantiate($row)
 }
 ```
 
+Also we need override `tableName` method in the `Car` model for use single table:
+
+```php
+public static function tableName()
+{
+    return '{{%car%}}';
+}
+```
+
 That's it. Let's try it. Create the following `actionTest` in `SiteController` and run it:
 
 ```php
