@@ -2,7 +2,7 @@ Asset processing with Grunt
 ===========================
 
 Yii 2.0 has [pretty good asset management out of the box](http://www.yiiframework.com/doc-2.0/guide-structure-assets.html).
-It can handle publishing, mapping, format converion, combining and compression. So far so good but if you're working with
+It can handle publishing, mapping, format conversion, combining and compression. So far so good but if you're working with
 frontend team of your asset processing goes slightly beyond what Yii is capable of, it's a good idea to delegate the job to
 [Grunt](http://gruntjs.com/) which has lots of extensions capable of what Yii can do plus anything you can imagine about
 clientside development.
