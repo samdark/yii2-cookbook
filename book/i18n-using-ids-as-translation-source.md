@@ -18,6 +18,7 @@ then set `forceTranslation` to `true`:
                 'class' => 'yii\i18n\PhpMessageSource',
                 //'basePath' => '@app/messages',
                 'sourceLanguage' => 'key', // <--- here
+                'forceTranslation' => true, // <--- and here
                 'fileMap' => [
                     'app' => 'app.php',
                     'app/error' => 'error.php',
