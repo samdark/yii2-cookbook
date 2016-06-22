@@ -135,7 +135,7 @@ Also we need override `tableName` method in the `Car` model for use single table
 ```php
 public static function tableName()
 {
-    return '{{%car%}}';
+    return '{{%car}}';
 }
 ```
 
