@@ -130,7 +130,7 @@ public static function instantiate($row)
 }
 ```
 
-Also we need override `tableName` method in the `Car` model for use single table:
+Also we need to override `tableName` method in the `Car` model in order for all models involved to use a single table:
 
 ```php
 public static function tableName()

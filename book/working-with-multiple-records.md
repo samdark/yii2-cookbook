@@ -106,7 +106,7 @@ While there is only one credit, there might be many files and references
 3 Start the transaction
 
 Its important to start the transaction at this point since some validations like
-`unique` and `exist` might be neccessary so we start the transaction here to
+`unique` and `exist` might be necessary so we start the transaction here to
 avoid [Reading Phenomena]
 (https://en.wikipedia.org/wiki/Isolation_\(database_systems\)#Read_phenomena).
 

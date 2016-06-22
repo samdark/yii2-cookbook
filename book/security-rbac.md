@@ -12,7 +12,7 @@ As an example we'll take article publishing system such as [YiiFeed](http://yiif
 Initial configuration of authentication manager component follows the same pattern as
 [any other component configuration](http://www.yiiframework.com/doc-2.0/guide-structure-application-components.html):
 in the application config under `components` section we're adding section called `authManager` specifying a class
-and options for the object created. There are two backends avaialable for authentication manager: PHP files and database.
+and options for the object created. There are two backends available for authentication manager: PHP files and database.
 Both are using the same API so there's no difference besides how RBAC data is stored.
 
 ### PHP backend

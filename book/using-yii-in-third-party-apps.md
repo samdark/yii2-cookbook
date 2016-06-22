@@ -94,7 +94,6 @@ return [
 
 That's it. You can require the file and mix Yii code into your legacy app:
 
-
 ```php
 // legacy code
 
