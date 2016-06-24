@@ -198,7 +198,7 @@ use yii\console\Controller;
 
 class RbacController extends Controller
 {
-    public function actionAssign($role, $username)
+    public function actionAssign($rolename, $username)
     {
         $user = User::find()->where(['username' => $username])->one();
         if (!$user) {
@@ -206,9 +206,9 @@ class RbacController extends Controller
         }
 
         $auth = Yii::$app->authManager;
-        $role = $auth->getRole($role);
+        $role = $auth->getRole($rolename);
         if (!$role) {
-            throw new InvalidParamException("There is no role \"$role\".");
+            throw new InvalidParamException("There is no role \"$rolename\".");
         }
 
         $auth->assign($role, $user->id);
