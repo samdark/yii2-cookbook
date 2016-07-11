@@ -32,7 +32,7 @@ $this->title = $this->title ? $this->title : 'default title';
 ```
  
  
-## Desctiption and Keywords
+## Description and Keywords
 
 There are no dedicated view parameters for `keywords` or  `description`. Since these are meta tags and you should
 set them by `registerMetaTag()` method.
