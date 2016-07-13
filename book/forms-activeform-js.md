@@ -89,3 +89,13 @@ $('#contact-form').yiiActiveForm('updateMessages', {
 ```
 
 The last argument in the above code indicates if we need to update summary.
+
+Listening for attribute changes
+--------------------------------
+To attach events to attribute changes like Select, Radio Buttons, etc.. you can use the following code
+
+```javascript
+$("#attribute-id").on('change.yii',function(){
+        //your code here
+});
+```
