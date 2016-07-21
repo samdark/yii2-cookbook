@@ -110,3 +110,26 @@ $("#attribute-id").on('change.yii',function(){
         //your code here
 });
 ```
+
+Getting Attribute Value
+-----------------------
+
+In order to be compatible with third party widgets like (Kartik), the best option to retrieve the actual value of an attribute is:
+
+```javascript
+$('#form_id').yiiActiveForm('find', '#attribute').value
+```
+
+Custom Validation
+-----------------
+
+In case you want to change the validation of an attribute in JS based on a new condition, you can do it with the rule property whenClient, but in the case you need a validation that doesn't depends on rules (only client side), you can try this:
+
+```javascript
+$('#form_id').on('beforeValidate', function (e) {
+            $('#form_id').yiiActiveForm('find', '#attribute').validate = function (attribute, value, messages, deferred, $form) {
+                //Custom Validation
+            }
+        return true;
+    });
+```
