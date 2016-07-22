@@ -53,6 +53,8 @@ Available events are:
 Adding and removing fields dynamically
 --------------------------------------
 
+To add a field to validation list:
+
 ```javascript
 $('#contact-form').yiiActiveForm('add', {
     'id': 'address',
@@ -61,6 +63,12 @@ $('#contact-form').yiiActiveForm('add', {
     'input': '#address',
     'error': '.field-address .help-block'
 });
+```
+
+To remove a field so it's not validated:
+
+```javascript
+$('#contact-form').yiiActiveForm('remove', 'address');
 ```
 
 Updating error of a single attribute
