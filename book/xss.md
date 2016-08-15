@@ -28,7 +28,7 @@ public function actionIndex()
 And in `index.php` view we output data without any escaping:
 
 ```php
-echo $post;
+echo $data;
 ```
 
 That's it. We're vulnerable. Visit your website main page you will see "injection example" alert.
@@ -40,7 +40,7 @@ Next you'll learn how to prevent it.
 If you're sure you'll have just text in your data, you can escape it in the view with `Html::encode()` while outputting it:
 
  ```php
- echo Html::encode($post);
+ echo Html::encode($data);
  ```
 
 ## Dealing with HTML output
@@ -50,7 +50,7 @@ In case you need to output HTML entered by user it's getting a bit more complica
 dangerous from HTML. In a view you may use it as the following:
 
 ```php
-echo HtmlPurifier::process($post);
+echo HtmlPurifier::process($data);
 ```
 
 > Note: HtmlPurifier isn't fast so consider caching what's produced by `HtmlPurifier` not to call it too often.
