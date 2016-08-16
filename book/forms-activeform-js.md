@@ -57,11 +57,14 @@ To add a field to validation list:
 
 ```javascript
 $('#contact-form').yiiActiveForm('add', {
-    'id': 'address',
-    'name': 'address',
-    'container': '.field-address',
-    'input': '#address',
-    'error': '.help-block'
+    id: 'address',
+    name: 'address',
+    container: '.field-address',
+    input: '#address',
+    error: '.help-block'
+    validate:  function (attribute, value, messages, deferred, $form) {
+        yii.validation.required(value, messages, {message: "Validation Message Here"});
+    }
 });
 ```
 
