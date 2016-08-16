@@ -61,7 +61,7 @@ $('#contact-form').yiiActiveForm('add', {
     'name': 'address',
     'container': '.field-address',
     'input': '#address',
-    'error': '.field-address .help-block'
+    'error': '.help-block'
 });
 ```
 
