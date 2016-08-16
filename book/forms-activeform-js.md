@@ -61,7 +61,10 @@ $('#contact-form').yiiActiveForm('add', {
     'name': 'address',
     'container': '.field-address',
     'input': '#address',
-    'error': '.field-address .help-block'
+    'error': '.field-address .help-block',
+    "validate":  function (attribute, value, messages, deferred, $form) {
+        yii.validation.required(value, messages, {"message": "Validation Message Here"});
+    }
 });
 ```
 
