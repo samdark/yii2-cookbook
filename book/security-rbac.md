@@ -305,7 +305,7 @@ class ArticleController extends Controller
         if (Yii::$app->user->id == $model->user_id || \Yii::$app->user->can('manageArticles')) {
             // ...
         } else {
-            throw new ForbiddenHttpException('You are not alloed to edit this article.');
+            throw new ForbiddenHttpException('You are not allowed to edit this article.');
         }
     }
 }
