@@ -64,6 +64,7 @@ Structuring and organizing code
 - Asset processing with Gulp
 - [Using global functions](structure-global-functions.md)
 - [Processing text](processing-text.md)
+- [Implementing typed collections](structure-collections.md)
 
 View
 ----
