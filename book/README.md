@@ -100,7 +100,7 @@ Performance
 
 - Necessary production setup
 - Speeding up sessions
-- Implementing backgroud tasks (cronjobs)
+- [Implementing backgroud tasks (cronjobs)](performance-cron.md)
 - [Running Yii on HHVM](performance-hhvm.md)
 - [Caching](caching.md)
 - [Configuring a Yii2 Application for an Autoscaling Stack](scaling.md)
