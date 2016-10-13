@@ -15,11 +15,11 @@ common
   components
   models
 backend
-  controlles
+  controllers
   views
   Module
 frontend
-  controlles
+  controllers
   views
   Module
 ```
