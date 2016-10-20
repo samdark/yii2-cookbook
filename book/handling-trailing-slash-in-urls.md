@@ -14,66 +14,7 @@ For example,
 ## Using UrlNormalizer
 
 Since Yii 2.0.10 there's `UrlNormalizer` class you can use to deal with slash and no-slash URLs in a very convenient way.
-
-See https://github.com/yiisoft/yii2/commit/6d15d4efe20d2fc2e219496976733944ae66ed4a#diff-e1294a469b930a9d8250fd039921d044R520
-
-- TODO: give some usage examples
-- TODO: deprecate "Yii prior to 2.0.10" section after 2.0.10 is released
-
-## Yii prior to 2.0.10
-
-Prior to 2.0.10 there was no built-in way to configure such redirections easily so it required extra effort.
-
-### Redirecting to no-slash URLs
-
-In order to prefer no-slash URLs add the following to `config/main.php` (or whatever your main application config file is):
-
-```php
-return [
-    ...
-
-    'on beforeRequest' => function () {
-        $pathInfo = Yii::$app->request->pathInfo;
-        $query = Yii::$app->request->queryString;
-        if (!empty($pathInfo) && substr($pathInfo, -1) === '/') {
-            $url = '/' . substr($pathInfo, 0, -1);
-            if ($query) {
-                $url .= '?' . $query;
-            }
-            Yii::$app->response->redirect($url, 301);
-            Yii::$app->end();
-        }
-    },
-
-    ...
-];
-```
-
-
-### Redirecting to slash URLs
-
-In order to prefer slash URLs add the following to `config/main.php` (or whatever your main application config file is):
-
-```php
-return [
-    ...
-    
-    'on beforeRequest' => function () {
-        $pathInfo = Yii::$app->request->pathInfo;
-        $query = Yii::$app->request->queryString;
-        if (!empty($pathInfo) && substr($pathInfo, -1) !== '/') {
-            $url = '/' . $pathInfo . '/';
-            if ($query) {
-                $url .= '?' . $query;
-            }
-            Yii::$app->response->redirect($url, 301);
-            Yii::$app->end();
-        }
-    },
-    
-    ...
-];
-```
+Check out the "[URL normalization](http://www.yiiframework.com/doc-2.0/guide-runtime-routing.html#url-normalization)" section in the official guide for details.
 
 ## Redirecting via web server config
 
