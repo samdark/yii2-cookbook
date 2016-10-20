@@ -47,11 +47,12 @@ use yii\db\ActiveQuery;
 class CarQuery extends ActiveQuery
 {
     public $type;
+    public $tableName;
 
     public function prepare($builder)
     {
         if ($this->type !== null) {
-            $this->andWhere(['type' => $this->type]);
+            $this->andWhere(["$this->tableName.type" => $this->type]);
         }
         return parent::prepare($builder);
     }
@@ -75,7 +76,7 @@ class SportCar extends Car
 
     public static function find()
     {
-        return new CarQuery(get_called_class(), ['type' => self::TYPE]);
+        return new CarQuery(get_called_class(), ['type' => self::TYPE, 'tableName' => self::tableName()]);
     }
 
     public function beforeSave($insert)
@@ -103,7 +104,7 @@ class HeavyCar extends Car
 
     public static function find()
     {
-        return new CarQuery(get_called_class(), ['type' => self::TYPE]);
+        return new CarQuery(get_called_class(), ['type' => self::TYPE, 'tableName' => self::tableName()]);
     }
 
     public function beforeSave($insert)
