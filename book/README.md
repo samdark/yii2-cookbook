@@ -65,6 +65,9 @@ Structuring and organizing code
 - [Using global functions](structure-global-functions.md)
 - [Processing text](processing-text.md)
 - [Implementing typed collections](structure-collections.md)
+- [MVC](mvc.md)
+- [SOLID](solid.md)
+- [Dependencies](dependencies.md)
 
 View
 ----
