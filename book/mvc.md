@@ -27,3 +27,5 @@ A model is the most interesting part of the MVC and the most misunderstood one. 
 > Note: Model in MVC is not Yii Model class and is not Active Record. It can be totally disconnected from the database structure.
 
 ActiveRecord classes should not contain any significant business logic. It deserves to be in separate classes which are built according to [SOLID](solid.md) and [Dependency Inversion](dependencies.md). Don't be afraid to create your own classes which are not inherited from anything from the framework.
+
+> Note: Model should never deal with formatting i.e. it should not form any HTML. It's the job of the view layer. Also, same as in the view, it is strictly forbidden to work with any environment, database or user input directly in the view. It should be in controller.
