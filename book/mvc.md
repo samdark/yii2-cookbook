@@ -23,3 +23,5 @@ A view layer is getting prepared data from controller and formats it before send
 ## Model
 
 A model is the most interesting part of the MVC and the most misunderstood one. MVC model is often confused with Yii Model class and even Active Record. These are not the same thing. MVC model is not a single class, it's the whole domain layer (also called problem layer or application logic). Given data from controller it's doing actual job of the application and passing results back to controller.
+
+> Note: Model in MVC is not Yii Model class and is not Active Record. It can be totally disconnected from the database structure.
