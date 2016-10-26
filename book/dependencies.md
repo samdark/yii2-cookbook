@@ -32,3 +32,16 @@ You can't eliminate dependencies altogether but you can make them more flexible.
 
 ## Dependency container
 
+Injecting basic dependencies is simple and easy. You're choosing a place where you don't care about dependencies, which is usually controller which you aren't going to unit-test ever, create instances of dependencies needed and pass these to dependent classes.
+
+It works well when there aren't many dependencies overall and when there are no nested dependencies. When there are many and each dependency has dependencies itself, instantiating the whole hierarchy becomes tedious process which requires lots of code and may lead
+to hard to debug mistakes.
+
+Additionally, lots of dependencies, such as certain third party API wrapper, are the same for any class using it. So it makes sense to:
+
+- Define how to instantiate such API wrapper once.
+- Instantiate it when required and only once per request.
+
+That's what dependency containers are for.
+
+See [official guide](http://www.yiiframework.com/doc-2.0/guide-concept-di-container.html) for more information about Yii's dependency container.
