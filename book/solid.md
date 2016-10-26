@@ -5,11 +5,11 @@ SOLID is a set of principles that you should follow if you want to get pure obje
 
 These stand for:
 
-- Single responsibility
-- Open-closed
-- Liskov substitution
-- Interface segregation
-- Dependency inversion
+- [Single responsibility](#single-responsibility)
+- [Open-closed](#open-closed)
+- [Liskov substitution](#liskov-substitution)
+- [Interface segregation](#interface-segregation)
+- [Dependency inversion](#dependency-inversion)
 
 Let's check what these mean.
 
