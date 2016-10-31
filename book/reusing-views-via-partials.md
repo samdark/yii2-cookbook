@@ -64,6 +64,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <?=$this->render('_jumbotron.php')?>; // our line
 ```
 
+In the code above we're relying on [`View::render()`](http://www.yiiframework.com/doc-2.0/yii-base-view.html#render%28%29-detail) method which renders a view specified and returns its output which we're echoing immediately.
+
 ## Adding variables
 
 Let's customize message displayed in jumbotron. By default it will be the same message but user should be able to pass
