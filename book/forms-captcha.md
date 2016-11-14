@@ -89,4 +89,67 @@ A good solution for it is to mix a custom task into the challenge. Example of su
 a simple math question such as "2 + 1 = ?". Of course, the more unique this question is, the more
 secure is the CAPTCHA.
 
-! example of implementing captcha that uses simple math as a question.
+Let's try implementing it. Yii CAPTCHA is really easy to extend. The component itself doesn't need to be
+touched since both code generation, code verification and image generation happens in `CaptchaAction`
+which is used in a controller. In basic project template it's used in `SiteController`.
+
+So, first of all, create `components/MathCaptchaAction.php`:
+
+```php
+<?php
+namespace app\components;
+
+use yii\captcha\CaptchaAction;
+
+class MathCaptchaAction extends CaptchaAction
+{
+    public $minLength = 0;
+    public $maxLength = 100;
+
+    /**
+     * @inheritdoc
+     */
+    protected function generateVerifyCode()
+    {
+        return mt_rand((int)$this->minLength, (int)$this->maxLength);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    protected function renderImage($code)
+    {
+        return parent::renderImage($this->getText($code));
+    }
+
+    protected function getText($code)
+    {
+        $code = (int)$code;
+        $rand = mt_rand(min(1, $code - 1), max(1, $code - 1));
+        $operation = mt_rand(0, 1);
+        if ($operation === 1) {
+            return $code - $rand . '+' . $rand;
+        } else {
+            return $code + $rand . '-' . $rand;
+        }
+    }
+}
+```
+
+In the code above we've adjusted code generation to be random number from 0 to 100. During image rendering we're generating simple
+math expression based on the current code.
+
+Now what's left is to change default captcha action class name to our class name in `controllers/SiteController.php`, `actions()` method:
+
+```php
+public function actions()
+{
+    return [
+        // ...
+        'captcha' => [
+            'class' => 'app\components\MathCaptchaAction',
+            'fixedVerifyCode' => YII_ENV_TEST ? '42' : null,
+        ],
+    ];
+}
+```
