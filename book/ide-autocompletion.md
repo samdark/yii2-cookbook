@@ -64,6 +64,12 @@ In the above PHPDoc of `BaseApplication`, `WebApplication`, `ConsoleApplication`
 
 That's it. Now `Yii::$app->user` will be our `\app\components\User` component instead of default one. The same applies for all other `@property`-declared components.
 
+Custom Yii class autogeneration
+----------------------
+
+You can generate custom `Yii` class automatically, using the components definitions from the application config.
+Check out [bazilio91/yii2-stubs-generator](https://github.com/bazilio91/yii2-stubs-generator) extention.
+
 ### Customizing User component
 
 In order to get autocompletion for User's Identity i.e. `Yii::$app->user->identity`, `app\components\User` class should look like the following:
