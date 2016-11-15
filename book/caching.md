@@ -7,6 +7,7 @@ PHP variables caching using APC extension
 ----------------
 
 Configure cache component in Yii application config file:
+
 ```php
 'cache' => [
   'class' => 'yii\caching\ApcCache',
@@ -26,6 +27,7 @@ if ($data === false) {
     $cache->set($key, $data);
 }
 ```
+
 Error `Call to undefined function yii\caching\apc_fetch()` means that you have problems with APC extension. Refer [PHP APC manual](http://php.net/manual/en/book.apc.php)
 for the details.
 
@@ -41,7 +43,7 @@ page loading process may be very slow.  Such tool as `PageSpeed Insights for Chr
 `Leverage browser caching`. You can do it by adding only one row to your application
 asset manager component:
 
-```
+```php
 return [
     // ...
     'components' => [

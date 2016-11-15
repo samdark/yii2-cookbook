@@ -1,0 +1,5 @@
+{
+    "require": {
+        "yiisoft/yii2-apidoc": "~2.0.0@dev"
+    }
+}
