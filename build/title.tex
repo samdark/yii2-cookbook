@@ -1,0 +1,14 @@
+\begin{titlepage}
+    % ensure centering the title page by ignoring odd and even margin
+    \setlength{\oddsidemargin}{-1in}
+    \setlength{\evensidemargin}{-1in}
+    \setlength{\textwidth}{\paperwidth}
+
+	\thispagestyle{empty}
+	\begin{tikzpicture}[remember picture, overlay]
+		\node[inner sep=0pt] at (current page.center) {%
+			\includegraphics[width=\textwidth]{../../book/images/cover.jpg}
+		};
+	\end{tikzpicture}
+
+\end{titlepage}
