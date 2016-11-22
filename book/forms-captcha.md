@@ -74,6 +74,8 @@ Now we can actually display image and verification input box in a view containin
 
 That's it. Now robots won't pass. At least dumb ones.
 
+If the image is not being displayed a good way to test if captcha requirements are installed is by accessing the captcha action directly. So for example if you are using a controller called site try typing in "http://blah.com/index.php/site/captcha" which should display an image. If not then turn on tracing and check for errors.
+
 Simple math captcha
 -------------------
 
