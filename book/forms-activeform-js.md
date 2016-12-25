@@ -24,9 +24,10 @@ Trigger validation for the whole form
 -------------------------------------
 
 ```javascript
-$('#contact-form').data('yiiActiveForm').submitting = true;
-$('#contact-form').yiiActiveForm('validate');
+$('#contact-form').yiiActiveForm('validate', true);
 ```
+
+The second passed argument `true` forces validation of the whole form.
 
 Using events
 ------------
