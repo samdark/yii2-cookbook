@@ -36,7 +36,7 @@ For more see [a good set of answers at StackOverflow](http://stackoverflow.com/q
 ## Interface segregation
 
 The principle points that an interface should not define more functionality that is actually used at the same time. It is like
-single responsibiltiy but for interfaces. In other words: if an inteface does too much, break it into multiple more focused interfaces.
+single responsibiltiy but for interfaces. In other words: if an interface does too much, break it into multiple more focused interfaces.
 
 ## Dependency inversion
 
