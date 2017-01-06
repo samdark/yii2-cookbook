@@ -56,7 +56,8 @@ public function actionIndex()
 And - voila! - we have JSON response right out of the box:
 
 **Result**
-```
+
+```json
 {
     "0": "some",
     "1": "array",
@@ -81,7 +82,7 @@ public function actionView($id)
 Now $user is an instance of `ActiveRecord` class that implements `Arrayable` interface, so it can be easily converted to JSON:
 
 **Result**
-```
+```json
 {
     "id": 1,
     "name": "John Doe",
@@ -103,7 +104,8 @@ public function actionIndex()
 Now `$users` is an array of ActiveRecord objects, but under the hood Yii uses `\yii\helpers\Json::encode()` that traverses and converts the passed data, taking care of types by itself:
 
 **Result**
-```
+
+```json
 [
     {
         "id": 1,
@@ -123,6 +125,7 @@ XML response
 ------------
 
 Just change response format to `FORMAT_XML` and that't it. Now you have XML:
+
 ```php
 public function actionIndex()
 {
@@ -133,6 +136,7 @@ public function actionIndex()
 ```
 
 **Result**
+
 ```xml
 <response>
     <item>some</item>
@@ -146,6 +150,7 @@ public function actionIndex()
 ```
 
 And yes, we can convert objects and array of objects the same way as we did before.
+
 ```php
 public function actionIndex()
 {
@@ -154,7 +159,9 @@ public function actionIndex()
     return $users;
 }
 ```
+
 **Result:**
+
 ```xml
 <response>
     <User>
@@ -239,7 +246,7 @@ Choosing format based on content type requested
 You can use the `ContentNegotiator` controller filter in order to choose format based on what is requested. In order
 to do so you need to implement `behaviors` method in controller:
 
-```
+```php
 public function behaviors()
 {
     return [
@@ -271,5 +278,5 @@ public function actionView($id)
 
 That's it. Now you can test it via the following URLs:
 
-`/index.php?r=user/index&_format=xml`
-`/index.php?r=user/index&_format=json`
+- `/index.php?r=user/index&_format=xml`
+- `/index.php?r=user/index&_format=json`
