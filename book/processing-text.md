@@ -10,24 +10,28 @@ Converting markdown to HTML
 
 ### How to do it
 
-Markdown helper
+Markdown helper is very easy to use:
 
-### Where to do it
-
-- Right in the view because it's fast
-- Could save to separate field in DB (afterSave) or cache (afterSave) for extra performance (can't save to the same field because of the need to edit original)
+```php
+$myHtml = Markdown::process($myText); // use original markdown flavor
+$myHtml = Markdown::process($myText, 'gfm'); // use github flavored markdown
+$myHtml = Markdown::process($myText, 'extra'); // use markdown extra
+```
 
 ### How to secure output
 
-HTMLPurifier
+Since markdown allows pure HTML as well, it's not secure to use it as is. Thus we'll need to post-process output via HTMLPurifier:
 
-Could wrap into a simple call.
+```php
+$safeHtml = HtmlPurifier::process($unsafeHtml);
+```
+
+### Where to do it
+
+- The library used to convert markdown to HTML is fast so processing right in the view could be OK.
+- Result could be saved into separate field in database or cached for extra performance. Both could be done in `afterSave` method of the model. Note that in case of database field we can't save processed HTML to the same field because of the need to edit original.
 
 Alternatives
 ------------
 
-Markdown is not the only simple markup available:
-
-- 
-- 
-- 
+Markdown is not the only simple markup available. A good [overview exists in Wikipedia](https://en.wikipedia.org/wiki/Lightweight_markup_language).
