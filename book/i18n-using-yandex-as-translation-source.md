@@ -1,14 +1,13 @@
-Using machine translation (such as google or yandex) as translation source.
-================================
+# Using machine translation as translation source
 
-Sometimes we need to translate the site into other languages.
-I do not recommend to use machine translation as production ready solution, but it can help to prepare the site to the translation by professional translators.
+Sometimes we need to translate the site into other languages but do not really know the language. In this case machine tranlation such as Google or Yandex may be helpful. At least for testing purposes. It is not recommended to use machine translation as production ready solution, but it can help to test UI and prepare project for more professional translation.
 
 
 ## How to do it
 
-First of all we need catch MissingTranslationEvent. It is more convenient to wrap catch method in component.
-We use DbMessageSource to store translated messages ([the appropriate database migration is needed](http://www.yiiframework.com/doc-2.0/yii-i18n-dbmessagesource.html)).
+As an example we'll implement machine translation via Yandex APIs. We need respond to `MissingTranslationEvent`. It is more convenient to extract event handler method in a component. To store translated messages we'll use `DbMessageSource` thus [appropriate database migration should be applied](http://www.yiiframework.com/doc-2.0/yii-i18n-dbmessagesource.html).
+
+Create `YandexTranslation` component:
 
 ```php
 namespace common\components;
@@ -20,7 +19,7 @@ use yii\i18n\MissingTranslationEvent;
 class YandexTranslation extends \yii\base\Component
 {
         /**
-         * Provider api key. Get it for free at
+         * Provider API key. Get it for free at
          * @link https://tech.yandex.com/keys/get/?service=trnsl
          */
         public $apiKey;
@@ -100,5 +99,5 @@ Now we need to configure a new translator:
 
 ## How it works
 
-To use machine translator put "machine" category in 't' function Yii::t('machine', 'Text to translate');
+To use machine translator put `machine` category in `t` function: `Yii::t('machine', 'Text to translate')`.
 Do not forget to enable cache in production.
