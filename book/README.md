@@ -78,6 +78,7 @@ View
 - Using decorators
 - When to use Widgets and when not to
 - [Switching themes dynamically](switching-themes.md)
+- [Postprocessing response](response-post-processing.md)
 
 Models
 ------
