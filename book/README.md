@@ -47,6 +47,7 @@ Forms
 - [Using and customizing captcha](forms-captcha.md)
 - [Working with ActiveForm via JavaScript](forms-activeform-js.md)
 - [Uploading files](forms-uploading-files.md)
+- [Custom validator for multiple attributes](forms-validator-multiple-attributes.md)
 
 Security
 --------
