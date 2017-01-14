@@ -9,4 +9,4 @@ This is an OpenSource book full of tips and tricks about [Yii 2.0](http://www.yi
 
 The book is created [by Yii community](https://github.com/samdark/yii2-cookbook/graphs/contributors) and edited by Alexander Makarov ([@samdark](https://github.com/samdark)), a core team member of the framework.
 
-Feel free to pull request your own writings. I'll review it, provide feedback and merge the best possible way.
+Feel free to [pull request your own writings](https://github.com/samdark/yii2-cookbook). I'll review it, provide feedback and merge the best possible way.
