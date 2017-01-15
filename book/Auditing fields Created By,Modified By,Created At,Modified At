@@ -1,0 +1,49 @@
+In almost every web application we need auditing fields like Created By,Modified By, Created At & Modified At.
+This will help us get information about record like who created this record & when ,also when was record last time updated 
+& by whom.
+
+So lets implement this by beautiful feature **behaviors** provided by YII.
+Let say we have table namely **customer** with below auditing fields.
+
+| Column Name   |     Type      |
+| ------------- | ------------- |
+| created_by    |   varchar     |
+| modified_by   |   varchar     |
+| created_at    |   timestamp   |
+| modified_at   |   timestamp   |
+
+Add below code in your models/customer.php
+
+```
+use yii\behaviors\TimestampBehavior;
+use yii\db\Expression;
+use yii\behaviors\AttributeBehavior ;
+
+ public function behaviors()
+    {
+        return [
+            'timestamp' => [
+                'class' => TimestampBehavior::className(),
+                'attributes' => [
+                    \yii\db\ActiveRecord::EVENT_BEFORE_INSERT => ['created_at', 'modified_at'],
+                    \yii\db\ActiveRecord::EVENT_BEFORE_UPDATE => 'modified_at',
+                ],
+                'value' => new Expression('NOW()'),
+            ],
+
+            [
+            'class' => AttributeBehavior::className(),
+            'attributes' => [
+                \yii\db\ActiveRecord::EVENT_BEFORE_INSERT => ['created_by','modified_by'],
+                \yii\db\ActiveRecord::EVENT_BEFORE_UPDATE => 'modified_by',
+            ],
+            'value' => function ($event) {
+                return Yii::$app->user->identity->username;
+            },
+        ],
+        ];
+    }
+
+```
+
+This will fields will get created & updated automatically.
