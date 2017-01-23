@@ -10,6 +10,7 @@ Unnoticed basics
 - Events
 - What to choose? Object or Component?
 - Configuring components globally
+- [Web servers configurations](web-servers-configurations.md)
 
 Logging and error handling
 --------------------------
