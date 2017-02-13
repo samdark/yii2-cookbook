@@ -23,6 +23,10 @@ class Yii extends \yii\BaseYii
     public static $app;
 }
 
+spl_autoload_register(['Yii', 'autoload'], true, true);
+Yii::$classMap = require(__DIR__ . '/vendor/yiisoft/yii2/classes.php');
+Yii::$container = new yii\di\Container();
+
 /**
  * Class BaseApplication
  * Used for properties that are identical for both WebApplication and ConsoleApplication
