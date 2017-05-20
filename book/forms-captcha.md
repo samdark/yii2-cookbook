@@ -1,7 +1,7 @@
 Using and customizing CAPTCHA
 =============================
 
-[Accodring to Wikipedia](http://en.wikipedia.org/wiki/Captcha) CAPTCHA means "Completely Automated Public Turing test to tell
+[According to Wikipedia](http://en.wikipedia.org/wiki/Captcha) CAPTCHA means "Completely Automated Public Turing test to tell
 Computers and Humans Apart". In other words, CAPTCHA provides a problem human can solve easily but computer can't. The purpose
 of it is to prevent automated abuse such as posting comments containing links to malicious websites or voting for a particular
 candidate in an election.
