@@ -48,7 +48,7 @@ public function actionCreate()
                     // other fields, make sure to NOT include credit_id since
                     // the record has not been created yet.
                 ]) && $valid;
-            $valid =  Model::::validateMultiple($modelFiles, [
+            $valid =  Model::validateMultiple($modelFiles, [
                     'file',
                     // other fields, make sure to NOT include credit_id since
                     // the record has not been created yet.
