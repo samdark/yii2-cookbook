@@ -1,7 +1,7 @@
 Implementing typed collections
 ==============================
 
-For stricter type hinting and iterfaces it could be useful to implement typed collections to put your models and other same-typed
+For stricter type hinting and interfaces it could be useful to implement typed collections to put your models and other same-typed
 classes into.
 
 As an example, we'll assume we have a `Post` class:
