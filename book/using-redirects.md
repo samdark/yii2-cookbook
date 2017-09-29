@@ -5,7 +5,7 @@ Using redirects
 
 Let's imagine we had a page `http://example.com/item2` but then permanently moved content to `http://example.com/item1`.
 There is a good chance that some users (or search crawlers) have already saved `http://example.com/item2` via
-bookmarks, database, web site article, etc. Because of that we can't just remove `http://webproject.ru/item2`.
+bookmarks, database, web site article, etc. Because of that we can't just remove `http://example.com/item2`.
 
 In this case use 301 redirect.
 
