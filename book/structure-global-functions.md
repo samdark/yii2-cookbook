@@ -54,7 +54,7 @@ function url($url = '', $scheme = false)
     return Url::to($url, $scheme);
 }
 
-function h($text)
+function he($text)
 {
     return Html::encode($text);
 }
