@@ -134,3 +134,67 @@ $('#form_id').on('beforeValidate', function (e) {
         return true;
     });
 ```
+
+AJAX form submission with server validation
+-----------------
+
+To submit form via AJAX it is required to attach a handler on `beforeSubmit` event. Handler will replace default form submission 
+and is responsible for sending data to the server and displaying error messages if server validation fails. Displaying validation
+messages requires support at the controller side.
+
+Attach a handler to form: 
+
+```js
+$('#contact-form').on('beforeSubmit', function () {
+    var $yiiform = $(this);
+    $.ajax({
+            type: $yiiform.attr('method'),
+            url: $yiiform.attr('action'),
+            data: $yiiform.serializeArray(),
+        }
+    )
+        .done(function(data) {
+            if(data.success) {
+                // data is saved
+            } else if (data.validation) {
+                // server validation failed
+                $yiiform.yiiActiveForm('updateMessages', data.validation, true); // renders validation messages at appropriate places
+            } else {
+                // incorrect server response
+            }
+        })
+        .fail(function () {
+            // request failed
+        })
+
+    return false; // prevent default form submission
+})
+```
+
+Controller support:
+
+```php
+public function actionUpdate($id)
+{
+    $model = $this->findModel($id);
+
+    if (Yii::$app->request->isAjax) {
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->asJson(['success' => true]);
+        }
+
+        $result = [];
+        // The code below comes from ActiveForm::validate(). We do not need to validate the model
+        // again, as it was already validated by save(). Just collect the messages.
+        foreach ($model->getErrors() as $attribute => $errors) {
+            $result[yii\helpers\Html::getInputId($model, $attribute)] = $errors;
+        }
+
+        return $this->asJson(['validation' => $result]);
+    }
+
+    return $this->render('update', [
+        'model' => $model,
+    ]);
+}
+```
