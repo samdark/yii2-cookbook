@@ -8,7 +8,7 @@ How to do it
 ------------
 
 First of all, create a file that will contain functions. Let it be `functions.php` right in the root of the application.
-In order to be used it should in `require`d. The best place to do it is `index.php`:
+In order to be used it should in `require`d. The best place to do it is `web`/`index.php`:
 
 ```php
 // ...
