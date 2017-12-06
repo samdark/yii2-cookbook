@@ -100,10 +100,10 @@ After this you are able to write logs to separate files adding category name to 
 \Yii::endProfile('add to basket', 'basket');
 ```
 
-## Disable logging of youself actions
+## Disable logging of your own actions
 
 ### Problem
-You want to receive email when new user signs up. But you don't want to trace yourself sign up tests.
+You want to receive an email when a new user signs up, but you don't want to trace your own sign-up tests.
 
 ### Solution
 
