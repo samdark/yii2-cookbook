@@ -48,7 +48,7 @@ Most PaaS platforms such as Google Cloud Managed Instance Groups and Amazon Elas
 
 When the server group is set up using a disk based on the snapshot from the temporary server instance, you can remove the temporary server instance.
 
-Your server group is now configured. Set up a load balancer on your PaaS platform (i.e. Load Balancer on Google) for the server group, andset your domain's A or CNAME records to your load balancer's static IP.
+Your server group is now configured. Set up a load balancer on your PaaS platform (i.e. Load Balancer on Google) for the server group, and set your domain's A or CNAME records to your load balancer's static IP.
 
 The mechanism described above is really simple yet sufficient enough to have your application up and running. There can be another process incorporated in the mechanism such as deployment failure prevention, version rollback, zero downtime, etc. These will be described in another topic.
 
