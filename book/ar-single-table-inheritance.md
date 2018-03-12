@@ -181,7 +181,7 @@ If so, an instance of the class is returned. If nothing matches, it falls back t
 Handling unique values
 ----------------------
 
-If you have a column marked as unique, to prevent breaking the `UniqueValidator`` you need to specify the `targetClass`
+If you have a column marked as unique, to prevent breaking the `UniqueValidator` you need to specify the `targetClass`
 property.
 
 ```php
