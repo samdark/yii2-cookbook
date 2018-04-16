@@ -34,7 +34,7 @@ class PostCollection implements \Countable, \IteratorAggregate
     {
         foreach ($data as $item) {
             if (!$item instanceof Post) {
-                throw new \InvalidArgumentException('All items should be of Post class.');
+                throw new \InvalidArgumentException('All items should be instance of Post class.');
             }
         }
         $this->data = $data;
