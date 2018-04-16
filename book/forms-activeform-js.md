@@ -118,7 +118,7 @@ Getting Attribute Value
 In order to be compatible with third party widgets like (Kartik), the best option to retrieve the actual value of an attribute is:
 
 ```javascript
-$('#form_id').yiiActiveForm('find', '#attribute').value
+$('#form_id').yiiActiveForm('find', 'attribute').value
 ```
 
 Custom Validation
@@ -128,7 +128,7 @@ In case you want to change the validation of an attribute in JS based on a new c
 
 ```javascript
 $('#form_id').on('beforeValidate', function (e) {
-            $('#form_id').yiiActiveForm('find', '#attribute').validate = function (attribute, value, messages, deferred, $form) {
+            $('#form_id').yiiActiveForm('find', 'attribute').validate = function (attribute, value, messages, deferred, $form) {
                 //Custom Validation
             }
         return true;
