@@ -103,7 +103,7 @@ $id = (int)$_GET['id'];
 // new code
 require 'path/to/yii_init.php';
 
-$post = \app\models\Post::find()->where['id' => $id];
+$post = \app\models\Post::find()->where(['id' => $id]);
 
 echo Html::encode($post->title);
 ```
