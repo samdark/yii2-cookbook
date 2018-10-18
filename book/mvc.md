@@ -27,4 +27,4 @@ The model is the most interesting part of the MVC pattern and the most misunders
 
 ActiveRecord classes should not contain any significant business logic. It deserves to be in separate classes which are built according to [SOLID](solid.md) and [Dependency Inversion](dependencies.md). Don't be afraid to create your own classes which are not inherited from anything from the framework.
 
-> Note: The Model should never deal with formatting i.e. it should not produce any HTML. This is the job of the view layer. Also, same as in the view, it is strictly forbidden to work with any environment, database or user input directly in the view. It should be in controller.
+> Note: The Model should never deal with formatting i.e. it should not produce any HTML. This is the job of the view layer. Also, same as in the view, it is strictly forbidden to work with any environment, database or user input directly in the model. It should be in controller.
