@@ -42,4 +42,4 @@ single responsibiltiy but for interfaces. In other words: if an interface does t
 
 Dependency inversion basically states that a class should tell what it needs via interfaces but never get what it needs itself.
 
-See [dependencies.md]() for more information.
+See [dependencies.md](https://github.com/samdark/yii2-cookbook/blob/master/book/dependencies.md) for more information.
