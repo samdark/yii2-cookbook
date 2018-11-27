@@ -15,7 +15,7 @@ Let's check what these mean.
 
 ## Single responsibility
 
-A class should be responsible for a single task.
+Gather together the things that change for the same reasons. Separate those things that change for different reasons.
 
 ## Open-closed
 
