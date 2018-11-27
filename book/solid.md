@@ -1,7 +1,7 @@
 SOLID
 =====
 
-SOLID is a set of principles that you should follow if you want to get pure object oriented code which is easy to test and extend.
+SOLID is a set of principles that you should follow if you want to get code which is not fragile e.g. easy to change.
 
 These stand for:
 
@@ -19,8 +19,7 @@ Gather together the things that change for the same reasons. Separate those thin
 
 ## Open-closed
 
-A class or module (a set of related classes) should hide its implementation details (i.e. how exactly things are done)
-but have a well defined interface that both allows its usage by other classes (public methods) and extension via inheritance (
+A class or module (a set of related classes) should hide its implementation details (i.e. how exactly things are done) but have a well defined interface that both allows its usage by other classes (public methods) and extension via inheritance (
 protected and public methods).
 
 ## Liskov substitution
@@ -36,7 +35,7 @@ For more see [a good set of answers at StackOverflow](http://stackoverflow.com/q
 ## Interface segregation
 
 The principle points that an interface should not define more functionality that is actually used at the same time. It is like
-single responsibiltiy but for interfaces. In other words: if an interface does too much, break it into multiple more focused interfaces.
+single responsibiltiy but for interfaces. In other words: if an interface does differnt things, break it into multiple more focused interfaces.
 
 ## Dependency inversion
 
