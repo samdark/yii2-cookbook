@@ -15,14 +15,20 @@ Let's check what these mean.
 
 ## Single responsibility
 
+A class should have one, and only one, reason to change.
+
 Gather together the things that change for the same reasons. Separate those things that change for different reasons.
 
 ## Open-closed
+
+You should be able to extend a classes behavior, without modifying it.
 
 A class or module (a set of related classes) should hide its implementation details (i.e. how exactly things are done) but have a well defined interface that both allows its usage by other classes (public methods) and extension via inheritance (
 protected and public methods).
 
 ## Liskov substitution
+
+Derived classes must be substitutable for their base classes.
 
 LSP, when defined classically, is the most complicated principle in SOLID. In fact, it's not that complicated.
 
@@ -34,10 +40,14 @@ For more see [a good set of answers at StackOverflow](http://stackoverflow.com/q
 
 ## Interface segregation
 
+Make fine grained interfaces that are client specific.
+
 The principle points that an interface should not define more functionality that is actually used at the same time. It is like
 single responsibiltiy but for interfaces. In other words: if an interface does differnt things, break it into multiple more focused interfaces.
 
 ## Dependency inversion
+
+Depend on abstractions, not on concretions.
 
 Dependency inversion basically states that a class should tell what it needs via interfaces but never get what it needs itself.
 
