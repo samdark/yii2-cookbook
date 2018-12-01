@@ -18,6 +18,7 @@ Logging and error handling
 - Customizing 404 page
 - Handling errors and exceptions
 - Understanding error stack trace
+- [Overriding error handler from a module](overriding-error-handler-from-a-module.md)
 
 Web essentials
 --------------
