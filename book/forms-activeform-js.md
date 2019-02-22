@@ -50,6 +50,7 @@ Available events are:
 - [`beforeSubmit`](https://github.com/yiisoft/yii2/blob/master/framework/assets/yii.activeForm.js#L83).
 - [`ajaxBeforeSend`](https://github.com/yiisoft/yii2/blob/master/framework/assets/yii.activeForm.js#L93).
 - [`ajaxComplete`](https://github.com/yiisoft/yii2/blob/master/framework/assets/yii.activeForm.js#L103).
+- [`afterInit`](https://github.com/yiisoft/yii2/blob/master/framework/assets/yii.activeForm.js#L111).
 
 Adding and removing fields dynamically
 --------------------------------------
