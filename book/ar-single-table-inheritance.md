@@ -194,7 +194,7 @@ property.
 ```
 
 
-Changes possible in PHP 8
+Using PHP 8 syntax
 -------------------------
 In PHP 8 we can simplify instantiate method with new match expressions:
 
