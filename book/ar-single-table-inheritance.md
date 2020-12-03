@@ -196,7 +196,7 @@ property.
 
 Using PHP 8 syntax
 -------------------------
-In PHP 8 we can simplify instantiate method with new match expressions:
+In PHP 8 we can simplify `instantiate()` method with new match expressions:
 
 ```php
 public static function instantiate($row)
