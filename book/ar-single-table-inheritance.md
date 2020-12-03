@@ -192,3 +192,22 @@ property.
         ];
     }
 ```
+
+
+Changes possible in PHP 8
+-------------------------
+In PHP 8 we can simplify instantiate method with new match expressions:
+
+```php
+public static function instantiate($row)
+{
+    return match ($row['type']) {
+        SportCar::TYPE => new SportCar(),
+        HeavyCar::TYPE => new HeavyCar(),
+        default => new self
+    };
+}
+```
+
+But if 'type' is integer (not string as in this example), it's necessary to retype $row['type'] to integerr, beacuse match expressions use strict comparison.
+Just replace `$row['type']` with `(int)$row['type']`.
