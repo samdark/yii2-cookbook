@@ -17,7 +17,7 @@ The role of the controller is to accept input and convert it to commands for the
 
 The view layer processes and formats data from the controller before sending it to the user. It generates HTML, JSON, or whatever format is needed.
 
-> Note: It is strictly forbidden to work with any environment, database or user input directly in the view. It should be in controller.
+> Note: It is strictly forbidden to work with any environment, database or user input directly in the view. Parameters should come from controller.
 
 ## Model
 
