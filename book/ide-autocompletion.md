@@ -60,7 +60,7 @@ class ConsoleApplication extends yii\console\Application
 In the above PHPDoc of `BaseApplication`, `WebApplication`, `ConsoleApplication` will be used by IDE to autocomplete your custom components described via `@property`.
 
 > **Note**: To avoid "Multiple Implementations" PHPStorm warning and make autocomplete faster
-> exclude or "Mark as Plain Text" `vendor/yiisoft/yii2/Yii.php` file.
+> exclude or "Mark as Plain Text" `vendor/yiisoft/yii2/Yii.php` file. On recent versions of PHPStorm this options has been renamed to "Override file type".
 
 That's it. Now `Yii::$app->user` will be our `\app\components\User` component instead of default one. The same applies for all other `@property`-declared components.
 
