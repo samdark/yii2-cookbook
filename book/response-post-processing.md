@@ -1,7 +1,7 @@
 Post-processing response
 ========================
 
-Sometimes there's a need to post-process repsonse which is to be sent to browser. A good example is short tags like
+Sometimes there's a need to post-process response which is to be sent to browser. A good example is short tags like
 the ones in Wordpress engine. You use it like the following:
 
 ```php
@@ -12,7 +12,7 @@ And both are automatically replaced by corresponding content.
 
 ## How to do it
 
-Yii is very flexible so it's easy to achieve:
+Yii is very flexible, so it's easy to achieve:
 
 ```php
 Yii::$app->getResponse()->on(Response::EVENT_AFTER_PREPARE, function($event) {

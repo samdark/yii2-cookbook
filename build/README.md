@@ -1,7 +1,7 @@
 Building a PDF
 ==============
 
-This directory contains the files that are used to build a PDF verison ofthe book.
+This directory contains the files that are used to build a PDF version of the book.
 
 Requirements
 ------------

@@ -85,7 +85,7 @@ test application well before going live.
 Error reporting
 ---------------
 
-HHVM behavior about errors is different than PHP one so by default you're getting nothing but a blank white screen instead
+HHVM behavior about errors is different from PHP. By default, you're getting nothing but a blank white screen instead
 of an error. Add the following to HHVM config to fix it:
 
 ```

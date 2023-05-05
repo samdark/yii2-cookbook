@@ -80,7 +80,7 @@ Simple math captcha
 -------------------
 
 Nowadays CAPTCHA robots are relatively good at parsing image so while by using typical CAPTCHA
-you're significanly lowering number of spammy actions, some robots will still be able to parse the image
+you're significantly lowering number of spammy actions, some robots will still be able to parse the image
 and enter the verification code correctly.
 
 In order to prevent it we have to increase the challenge. We could add extra ripple and special effects

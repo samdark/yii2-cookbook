@@ -14,7 +14,7 @@ Cohesion means dependency on a class with related functionality.
 
 Coupling means dependency on a class with not really related functionality.
 
-It's preferrable to have high cohesion and low coupling. That means you should get related functionality together into
+It's preferable to have high cohesion and low coupling. That means you should get related functionality together into
 a group of classes usually called a module (which is *not* Yii module and not an actual class, just a logical boundary).
 Within that module it's a good idea not to over-abstract things and use interconnected classes directly. As for classes
 which aren't part of the module's purpose but are used by the module, such as general purpose utilities, these should not

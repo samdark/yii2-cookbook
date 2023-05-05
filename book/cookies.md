@@ -39,7 +39,7 @@ $value = \Yii::$app->getRequest()->getCookies()->getValue('my_cookie');
 Where to get and set cookies?
 -----------------------------
 
-Cookies are part of HTTP request so it's a good idea to do both in controller which responsibility is exactly dealing with request and response.
+Cookies are part of HTTP request, so it's a good idea to do both in controller which responsibility is exactly dealing with request and response.
 
 Cookies for subdomains
 ----------------------
@@ -101,7 +101,7 @@ $config = [
 
 Note that `cookieValidationKey` should be the same for all sub-domains.
 
-Note that you have to configure the `session::cookieParams` property to have the samedomain as your `user::identityCookie` to ensure the `login` and `logout` work for all subdomains. This behavior is better explained on the next section.
+Note that you have to configure the `session::cookieParams` property to have the same domain as your `user::identityCookie` to ensure the `login` and `logout` work for all subdomains. This behavior is better explained on the next section.
 
 Session cookie parameters
 -------------------------

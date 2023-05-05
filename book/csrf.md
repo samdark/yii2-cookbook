@@ -27,7 +27,7 @@ This is because for every request Yii generates a special unique token that you 
 So when you make a request Yii compares generated and received tokens. If they match Yii continues to handle request.
 If they don't match or in case CSRF token is missing in request data, an error is raised.
 
-The token generated isn't known to attacker website so it can't make requests on your behalf.
+The token generated isn't known to attacker website, so it can't make requests on your behalf.
 
 An important thing to note is about request methods such as `GET`. Let's add the following form and submit it:
 

@@ -68,7 +68,7 @@ In the code above we're relying on [`View::render()`](http://www.yiiframework.co
 
 ## Adding variables
 
-Let's customize message displayed in jumbotron. By default it will be the same message but user should be able to pass
+Let's customize message displayed in jumbotron. By default, it will be the same message but user should be able to pass
 custom message via `message` parameter.
 
 First of all, customize `views/site/_jumbotron.php`:

@@ -1,6 +1,6 @@
 # Using machine translation as translation source
 
-Sometimes we need to translate the site into other languages but do not really know the language. In this case machine tranlation such as Google or Yandex may be helpful. At least for testing purposes. It is not recommended to use machine translation as production ready solution, but it can help to test UI and prepare project for more professional translation.
+Sometimes we need to translate the site into other languages but do not really know the language. In this case machine translation such as Google or Yandex may be helpful. At least for testing purposes. It is not recommended to use machine translation as production ready solution, but it can help to test UI and prepare project for more professional translation.
 
 
 ## How to do it
@@ -52,7 +52,7 @@ class YandexTranslation extends \yii\base\Component
                                 ->where(['category' => $event->category, 'message' => $event->message])
                                 ->createCommand()
                                 ->queryScalar();
-                            // if not found, insert a new one. Note: it's better to use "upsert" command (depending of the used DB engine)
+                            // if not found, insert a new one. Note: it's better to use "upsert" command (depending on the used DB engine)
                             if (!$id) {
                                 $db->createCommand()->insert($messageSource->sourceMessageTable, [
                                         'category' => $event->category, 

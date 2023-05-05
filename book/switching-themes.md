@@ -16,7 +16,7 @@ For simplicity, let's switch theme based on a GET parameter i.e. `themed=1`.
  
 ## How to do it
 
-Theme could be switched at any moment before view template is rendered. For clarity sake let's do it right in
+Theme could be switched at any moment before view template is rendered. For sake of clarity let's do it right in
 index action of `controllers/SiteController.php`:
 
 ```php

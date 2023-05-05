@@ -2,7 +2,7 @@ Selecting application language
 ==============================
 
 When developing applications or websites for global marked, supporting multiple languages is always a requirement.
-Yii has built in solution for handling message translations but doesn’t provide anything about selecting a language
+Yii has built in solution for handling message translations but does not provide anything about selecting a language
 because implementation depends of requirements.
 
 In this recipe we’ll describe some typical cases of language selection and provide ideas and code snippets so you’ll
@@ -77,7 +77,7 @@ As was mentioned above, it could be implemented in custom `UrlManager`, custom `
 ## Support selecting language manually
 
 While it sounds like a great idea to always detect language, it’s usually not enough. Detection could fail so
-user will get language he doesn’t know, user may know many languages but prefer, for example, English for information
+user will get language he does not know, user may know many languages but prefer, for example, English for information
 about travelling. These problems could be solved by providing visible enough language selector that somehow remembers
 what was selected and uses it for the application further.
 

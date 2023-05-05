@@ -142,7 +142,7 @@ That's it. Objective achieved.
 
 ## A note on forms and Active Record
 
-For the sake of simplicity and laziness, Active Record is often reused for forms directly. There are scenarious making it doable
+For the sake of simplicity and laziness, Active Record is often reused for forms directly. There are scenarios making it doable
 and usually it doesn't cause any problems. However, there are situations when what's in the form actually differs from
-what is saved into database. In this case it is preferrable to create a separate form model which is not Active Record. Data
+what is saved into database. In this case it is preferable to create a separate form model which is not Active Record. Data
 saving should be done in this model instead of controller directly.

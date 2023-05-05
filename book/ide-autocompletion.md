@@ -68,7 +68,7 @@ Custom Yii class autogeneration
 ----------------------
 
 You can generate custom `Yii` class automatically, using the components definitions from the application config.
-Check out [bazilio91/yii2-stubs-generator](https://github.com/bazilio91/yii2-stubs-generator) extention.
+Check out [bazilio91/yii2-stubs-generator](https://github.com/bazilio91/yii2-stubs-generator) extension.
 
 ### Customizing User component
 

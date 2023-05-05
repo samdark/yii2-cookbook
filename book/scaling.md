@@ -1,4 +1,4 @@
-# Configuring a Yii2 Application for an Multiple Servers Stack
+# Configuring a Yii2 Application for a Multiple Servers Stack
 
 These instructions are focused on configuring Yii2 to be a stateless application. Stateless application means each of your servers should be the exact same copy as possible. They should not store data in the instance. Stateless instances means more scalable architecture. Current deployment method described is pretty basic. More efficient and complex deployment methods may be described in the future.
 
@@ -52,7 +52,7 @@ Your server group is now configured. Set up a load balancer on your PaaS platfor
 
 The mechanism described above is really simple yet sufficient enough to have your application up and running. There can be another process incorporated in the mechanism such as deployment failure prevention, version rollback, zero downtime, etc. These will be described in another topic.
 
-There are couple of deployment mechanism that is provided by different platform such as Google Cloud or Amazon Web Services. These also will be described in another topic.
+There are a couple of deployment mechanisms that are provided by different platform such as Google Cloud or Amazon Web Services. These also will be described in another topic.
 
 ## Assets Management
 

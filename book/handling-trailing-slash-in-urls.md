@@ -1,7 +1,7 @@
 Handling trailing slash in URLs
 ===============================
 
-By default Yii handles URLs without trailing slash and gives out 404 for URLs with it. It is a good idea to choose
+By default, Yii handles URLs without trailing slash and gives out 404 for URLs with it. It is a good idea to choose
 either using or not using slash but handling both and doing 301 redirect from one variant to another.
 
 For example,
