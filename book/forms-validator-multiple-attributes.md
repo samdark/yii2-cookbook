@@ -9,7 +9,7 @@ you consider it misleading in rules. In this recipe we'll implement `CustomValid
 
 ## How to do it
 
-By default if multiple attributes are used for validation, the loop will be used to apply the same validation to each
+By default, if multiple attributes are used for validation, the loop will be used to apply the same validation to each
 of them. Let's use a separate trait and override [[yii\base\Validator:validateAttributes()]]:
 
 ```php
@@ -28,7 +28,7 @@ trait BatchValidationTrait
      * Validates the specified object.
      * @param \yii\base\Model $model the data model being validated.
      * @param array|null $attributes the list of attributes to be validated.
-     * Note that if an attribute is not associated with the validator, or is is prefixed with `!` char - it will be
+     * Note that if an attribute is not associated with the validator, or is prefixed with `!` char - it will be
      * ignored. If this parameter is null, every attribute listed in [[attributes]] will be validated.
      */
     public function validateAttributes($model, $attributes = null)

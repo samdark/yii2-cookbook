@@ -1,7 +1,7 @@
 Working with ActiveForm via JavaScript
 ======================================
 
-PHP side of ActiveForm, which is usually more than enough for majority of projects,
+PHP side of ActiveForm, which is usually more than enough for the majority of projects,
 [is described well in the official Yii 2.0 guide](http://www.yiiframework.com/doc-2.0/guide-input-forms.html). It is getting
 a bit more tricky when it comes to advanced things such as adding or removing form fields dynamically or triggering individual
 field validation using unusual conditions.
@@ -105,7 +105,7 @@ The last argument in the above code indicates if we need to update summary.
 
 Listening for attribute changes
 --------------------------------
-To attach events to attribute changes like Select, Radio Buttons, etc.. you can use the following code
+To attach events to attribute changes like Select, Radio Buttons, etc... you can use the following code
 
 ```javascript
 $("#attribute-id").on('change.yii',function(){
@@ -125,7 +125,7 @@ $('#form_id').yiiActiveForm('find', 'attribute').value
 Custom Validation
 -----------------
 
-In case you want to change the validation of an attribute in JS based on a new condition, you can do it with the rule property whenClient, but in the case you need a validation that doesn't depends on rules (only client side), you can try this:
+In case you want to change the validation of an attribute in JS based on a new condition, you can do it with the rule property whenClient, but in the case you need a validation that doesn't depend on rules (only client side), you can try this:
 
 ```javascript
 $('#form_id').on('beforeValidate', function (e) {

@@ -17,7 +17,7 @@ Let's imagine we have two pages with similar or nearly similar content:
 - `http://example.com/item2`
 
 Our goal is to mark first one as canonical. Another one would be still accessible to end user. The process of adding
-SEO meta-tags is descibed in "[adding SEO tags](adding-seo-tags.md)" recipe. Adding `<link rel="canonical"` is very
+SEO meta-tags is described in "[adding SEO tags](adding-seo-tags.md)" recipe. Adding `<link rel="canonical"` is very
 similar. In order to do it from controller action you may use the following code:
 
 ```php

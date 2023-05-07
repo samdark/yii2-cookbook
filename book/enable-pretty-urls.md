@@ -3,8 +3,8 @@ Enable pretty URLs
 
 Sometimes users want to share your site URLs via social networks. For example, by default your *about page* URL looks
 like `http://webproject.ru/index.php?r=site%2Fabout`. Let's imagine this link on Facebook page. Do you want to click
-on it? Most of users have no idea what is `index.php` and what is `%2`. They trust such link less, so will click less
-on it. Thus web site owner would lose traffic.
+on it? Most users have no idea what is `index.php` and what is `%2`. They trust such link less, so will click less
+on it. Thus the website owner would lose traffic.
 
 URLs such as the following is better: `http://webproject.ru/about`. Every user can understand that it is a clear way
 to get to *about page*.
@@ -58,4 +58,4 @@ your users. So remove it by additional `urlManager` rule:
     ],
 ```
 
-As a result your URL will looks like `http://webproject.ru/about`.
+As a result your URL will look like `http://webproject.ru/about`.

@@ -39,7 +39,7 @@ HTTP caching for assets and other static resources
 
 If expiration not specified for cacheable resources (`.js`, `.css`, .etc.) a speed of 
 page loading process may be very slow.  Such tool as `PageSpeed Insights for Chrome` determines 
-`expiration not specified` problem as **crucial** for yii web page performance. It advices you to 
+`expiration not specified` problem as **crucial** for yii web page performance. It advises you to 
 `Leverage browser caching`. You can do it by adding only one row to your application
 asset manager component:
 

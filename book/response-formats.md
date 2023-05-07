@@ -124,7 +124,7 @@ Now `$users` is an array of ActiveRecord objects, but under the hood Yii uses `\
 XML response
 ------------
 
-Just change response format to `FORMAT_XML` and that't it. Now you have XML:
+Just change response format to `FORMAT_XML` and that's it. Now you have XML:
 
 ```php
 public function actionIndex()
@@ -203,7 +203,7 @@ class PhpArrayFormatter implements ResponseFormatterInterface
 }
 ```
 
-Now we need to registed it in application config (usually it's `config/web.php`):
+Now we need to register it in application config (usually it's `config/web.php`):
 
 ```php
 return [

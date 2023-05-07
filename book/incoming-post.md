@@ -1,7 +1,7 @@
 Handling incoming third party POST requests
 ===========================================
 
-By default Yii uses CSRF protection that verifies that POST requests could be made only by the same application.
+By default, Yii uses CSRF protection that verifies that POST requests could be made only by the same application.
 It enhances overall security significantly but there are cases when CSRF should be disabled i.e. when you expect
 incoming POST requests from a third party service.
 
@@ -41,7 +41,7 @@ class MyController extends Controller
     }
 ```
 
-We've implemented `beforeAction` controller method. It is invoked right before an action is executed so we're
+We've implemented `beforeAction` controller method. It is invoked right before an action is executed, so we're
 checking if executed action id matches id of the action we want to disable CSRF protection for and, if it's true,
 disabling it. Note that it's important to call parent method and call it last.
 

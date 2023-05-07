@@ -209,4 +209,4 @@ public static function instantiate($row)
 }
 ```
 
-If `type` is not a string as in this example but is an integer, it is necessary to cast `$row['type']` to `int`, beacuse match expressions use strict comparison. In this case replace `$row['type']` with `(int)$row['type']`.
+If `type` is not a string as in this example but is an integer, it is necessary to cast `$row['type']` to `int`, because match expressions use strict comparison. In this case replace `$row['type']` with `(int)$row['type']`.

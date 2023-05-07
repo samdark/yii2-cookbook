@@ -38,14 +38,14 @@ to end user or showing customized error page. Exception message is what actually
 the fully qualified exception class name is the category we can use to filter messages when
 configuring targets. 404 can be triggered by throwing `yii\web\NotFoundHttpException` or automatically.
 In both cases exception class is the same and is inherited from `\yii\web\HttpException` which is a bit
-special in regards to logging. The speciality is the fact that HTTP status code prepended by `:` is
+special regarding logging. The speciality is the fact that HTTP status code prepended by `:` is
 appended to the end of the log message category. In the above we're using `categories` to include
 and `except` to exclude 404 log messages.
 
 Immediate logging
 -----------------
 
-By default Yii accumulates logs till the script is finished or till the number of logs accumulated is
+By default, Yii accumulates logs till the script is finished or till the number of logs accumulated is
 enough which is 1000 messages by default for both logger itself and log target. It could be that you
 want to log messages immediately. For example, when running an import job and checking logs to see
 the progress. In this case you need to change settings via application config file:
@@ -206,7 +206,7 @@ As the result in the `error.log` you will see only the error related to `Hey! Co
 
 
 ### Even more
-If there is an bad request (user side) error you may want to display error message 'as is'. You can easily do it because
+If there is a bad request (user side) error you may want to display error message 'as is'. You can easily do it because
 our catch block works only for `ServerErrorHttpException` error types. So you are able to throw something like this:
 ```php
 throw new BadRequestHttpException('Email address you provide is invalid');

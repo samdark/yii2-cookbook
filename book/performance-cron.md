@@ -1,4 +1,4 @@
-Implementing backgroud tasks (cronjobs)
+Implementing background tasks (cronjobs)
 =======================================
 
 There are at least two ways to run scheduled background tasks:

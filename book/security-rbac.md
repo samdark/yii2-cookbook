@@ -188,7 +188,7 @@ The command above could be called as `./yii rbac/init`.
 
 Since our default user doesn't have any role we don't need to worry about assigning it.
 User role management could be implemented either in admin panel or in console. Since our admins are
-cool guys, we'll create console contoller `commands\RbacController.php`:
+cool guys, we'll create console controller `commands\RbacController.php`:
 
 ```php
 <?php

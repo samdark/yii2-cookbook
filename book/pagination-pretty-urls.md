@@ -1,13 +1,13 @@
 Pagination pretty URLs
 =======================================
 
-For example we can render our site content by GridView. If there are a lot of content rows we use pagination. 
+For example, we can render our site content by GridView. If there are a lot of content rows we use pagination. 
 And it is necessary to provide GET request for every pagination page. Thus search crawlers
 can index our content. We also need our URLs to be pretty. Let's do it.
 
 Initial state
 ---------
-For example we have a page with such URL `http://example.com/schools/schoolTitle`.
+For example, we have a page with such URL `http://example.com/schools/schoolTitle`.
 Parameter `schoolTitle` is a `title` parameter for our request. For details see [this recipe](https://github.com/samdark/yii2-cookbook/blob/master/book/urls-variable-number-of-parameters.md).
 
 In the application config file we have:
