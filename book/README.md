@@ -125,3 +125,5 @@ Tools
 - Making your life easier (XDebug, debug toolbar, gii)
 - [IDE autocompletion for custom components](ide-autocompletion.md)
 - [Using custom migration template](using-custom-migration-template.md)
+- [PhpStorm](phpstorm.md)
+- [Composer](composer.md)
