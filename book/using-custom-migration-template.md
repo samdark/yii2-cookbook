@@ -66,6 +66,13 @@ return [
         'migrate' => [
             'class' => 'yii\console\controllers\MigrateController',
             'templateFile' => '@app/views/migration.php',
+            'generatorTemplateFiles' => [
+                'create_table' => '@app/views/migration.php', // Template for creating a new table
+                'drop_table' => '@app/views/migration.php', // Template for dropping a table
+                'add_column' => '@app/views/migration.php', // Template for adding a column
+                'drop_column' => '@app/views/migration.php', // Template for dropping a column
+                'create_junction' => '@app/views/migration.php', // Template for creating a junction table
+        ],
         ],
     ],
  
